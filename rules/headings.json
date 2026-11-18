@@ -1,0 +1,556 @@
+{
+  "sections": [
+    {
+      "id": "demo",
+      "block": "demo",
+      "level": 2,
+      "title": {
+        "zh-TW": "線上展示",
+        "en": "Demo"
+      },
+      "aliases": {
+        "zh-TW": [
+          "展示",
+          "線上預覽",
+          "預覽",
+          "線上網址",
+          "展示網址"
+        ],
+        "en": [
+          "Live Demo",
+          "Preview",
+          "Live Preview",
+          "Live Site",
+          "Website"
+        ]
+      }
+    },
+    {
+      "id": "api-docs",
+      "block": "demo",
+      "level": 2,
+      "title": {
+        "zh-TW": "API 文件",
+        "en": "API Documentation"
+      },
+      "aliases": {
+        "zh-TW": [
+          "API 文件在哪",
+          "API 說明文件",
+          "API 文件位置"
+        ],
+        "en": [
+          "API Docs",
+          "API Reference",
+          "API Documentation"
+        ]
+      }
+    },
+    {
+      "id": "screenshots",
+      "block": "demo",
+      "level": 2,
+      "title": {
+        "zh-TW": "畫面",
+        "en": "Screenshots"
+      },
+      "aliases": {
+        "zh-TW": [
+          "截圖",
+          "畫面截圖",
+          "專案截圖",
+          "預覽圖",
+          "專案畫面"
+        ],
+        "en": [
+          "Screenshot",
+          "Screens"
+        ]
+      }
+    },
+    {
+      "id": "learning-objectives",
+      "block": "features",
+      "level": 2,
+      "title": {
+        "zh-TW": "學習目標",
+        "en": "Learning Objectives"
+      },
+      "aliases": {
+        "zh-TW": [
+          "你會學到",
+          "你會學到什麼",
+          "學習重點",
+          "課程目標"
+        ],
+        "en": [
+          "What You Will Learn",
+          "What You'll Learn",
+          "Learning Goals",
+          "Objectives"
+        ]
+      }
+    },
+    {
+      "id": "course-unit",
+      "block": "features",
+      "level": 2,
+      "title": {
+        "zh-TW": "對應單元",
+        "en": "Course Unit"
+      },
+      "aliases": {
+        "zh-TW": [
+          "對應課程",
+          "課程單元",
+          "課程資訊",
+          "對應章節"
+        ],
+        "en": [
+          "Lesson",
+          "Course",
+          "Course Info",
+          "Module",
+          "Chapter"
+        ]
+      }
+    },
+    {
+      "id": "features",
+      "block": "features",
+      "level": 2,
+      "title": {
+        "zh-TW": "功能",
+        "en": "Features"
+      },
+      "aliases": {
+        "zh-TW": [
+          "功能介紹",
+          "功能列表",
+          "主要功能",
+          "特色",
+          "API 一覽",
+          "API 列表"
+        ],
+        "en": [
+          "Feature List",
+          "Key Features",
+          "Endpoints",
+          "API Endpoints",
+          "API Overview"
+        ]
+      }
+    },
+    {
+      "id": "my-role",
+      "block": "features",
+      "level": 2,
+      "title": {
+        "zh-TW": "我負責的部分",
+        "en": "My Role"
+      },
+      "aliases": {
+        "zh-TW": [
+          "我的角色",
+          "負責項目",
+          "我做了什麼",
+          "個人貢獻",
+          "我的貢獻"
+        ],
+        "en": [
+          "Responsibilities",
+          "My Contributions",
+          "What I Did",
+          "My Part"
+        ]
+      }
+    },
+    {
+      "id": "tech",
+      "block": "tech",
+      "level": 2,
+      "title": {
+        "zh-TW": "使用技術",
+        "en": "Tech Stack"
+      },
+      "aliases": {
+        "zh-TW": [
+          "技術",
+          "專案技術",
+          "技術棧",
+          "使用的技術",
+          "技術選型",
+          "開發技術"
+        ],
+        "en": [
+          "Built With",
+          "Technologies",
+          "Technology",
+          "Tech",
+          "Stack",
+          "Technologies Used"
+        ]
+      }
+    },
+    {
+      "id": "design-decisions",
+      "block": "tech",
+      "level": 2,
+      "title": {
+        "zh-TW": "為什麼這樣做",
+        "en": "Design Decisions"
+      },
+      "aliases": {
+        "zh-TW": [
+          "技術決策",
+          "設計決策",
+          "技術選擇",
+          "為什麼選這些技術"
+        ],
+        "en": [
+          "Technical Decisions",
+          "Why This Stack",
+          "Decisions",
+          "Why"
+        ]
+      }
+    },
+    {
+      "id": "getting-started",
+      "block": "install",
+      "level": 2,
+      "title": {
+        "zh-TW": "安裝與執行",
+        "en": "Getting Started"
+      },
+      "aliases": {
+        "zh-TW": [
+          "安裝",
+          "安裝說明",
+          "快速開始",
+          "開始使用",
+          "如何執行",
+          "本機執行",
+          "執行方式"
+        ],
+        "en": [
+          "Installation",
+          "Install",
+          "Setup",
+          "Quick Start",
+          "Quickstart",
+          "How to Run",
+          "Running Locally",
+          "Local Development"
+        ]
+      }
+    },
+    {
+      "id": "requirements",
+      "block": "install",
+      "level": 3,
+      "title": {
+        "zh-TW": "環境需求",
+        "en": "Requirements"
+      },
+      "aliases": {
+        "zh-TW": [
+          "前置需求",
+          "系統需求",
+          "事前準備",
+          "開發環境"
+        ],
+        "en": [
+          "Prerequisites",
+          "Dependencies",
+          "System Requirements"
+        ]
+      }
+    },
+    {
+      "id": "install-steps",
+      "block": "install",
+      "level": 3,
+      "title": {
+        "zh-TW": "安裝步驟",
+        "en": "Installation"
+      },
+      "aliases": {
+        "zh-TW": [
+          "安裝",
+          "步驟"
+        ],
+        "en": [
+          "Install",
+          "Installing",
+          "Setup",
+          "Steps"
+        ]
+      }
+    },
+    {
+      "id": "testing",
+      "block": "install",
+      "level": 3,
+      "title": {
+        "zh-TW": "執行測試",
+        "en": "Running Tests"
+      },
+      "aliases": {
+        "zh-TW": [
+          "測試"
+        ],
+        "en": [
+          "Tests",
+          "Testing",
+          "Run Tests"
+        ]
+      }
+    },
+    {
+      "id": "database",
+      "block": "install",
+      "level": 2,
+      "title": {
+        "zh-TW": "建立資料庫",
+        "en": "Database Setup"
+      },
+      "aliases": {
+        "zh-TW": [
+          "資料庫",
+          "資料庫設定",
+          "資料庫建立",
+          "資料庫初始化"
+        ],
+        "en": [
+          "Database",
+          "Migrations",
+          "Seeding"
+        ]
+      }
+    },
+    {
+      "id": "start-finish",
+      "block": "install",
+      "level": 2,
+      "title": {
+        "zh-TW": "起始版與完成版",
+        "en": "Starter and Solution"
+      },
+      "aliases": {
+        "zh-TW": [
+          "起始版本與完成版本",
+          "起始檔與完成檔",
+          "練習版與解答",
+          "分支說明"
+        ],
+        "en": [
+          "Starter and Final",
+          "Starter & Solution",
+          "Start and Finish",
+          "Branches"
+        ]
+      }
+    },
+    {
+      "id": "usage",
+      "block": "install",
+      "level": 2,
+      "title": {
+        "zh-TW": "使用方式",
+        "en": "Usage"
+      },
+      "aliases": {
+        "zh-TW": [
+          "使用說明",
+          "操作方式",
+          "如何使用",
+          "使用範例",
+          "API 範例",
+          "請求範例"
+        ],
+        "en": [
+          "Examples",
+          "Example",
+          "How to Use",
+          "Request Examples"
+        ]
+      }
+    },
+    {
+      "id": "env",
+      "block": "env",
+      "level": 2,
+      "title": {
+        "zh-TW": "環境變數",
+        "en": "Environment Variables"
+      },
+      "aliases": {
+        "zh-TW": [
+          "環境變數說明",
+          "環境變數設定",
+          "環境設定",
+          "設定"
+        ],
+        "en": [
+          "Configuration",
+          "Config",
+          "Env",
+          ".env",
+          "Environment"
+        ]
+      }
+    },
+    {
+      "id": "structure",
+      "block": "structure",
+      "level": 2,
+      "title": {
+        "zh-TW": "資料夾結構",
+        "en": "Project Structure"
+      },
+      "aliases": {
+        "zh-TW": [
+          "資料夾說明",
+          "目錄結構",
+          "專案結構",
+          "檔案結構",
+          "資料夾架構"
+        ],
+        "en": [
+          "Folder Structure",
+          "Directory Structure",
+          "File Structure",
+          "Project Layout"
+        ]
+      }
+    },
+    {
+      "id": "contributing",
+      "block": "license",
+      "level": 2,
+      "title": {
+        "zh-TW": "貢獻方式",
+        "en": "Contributing"
+      },
+      "aliases": {
+        "zh-TW": [
+          "如何貢獻",
+          "參與貢獻"
+        ],
+        "en": [
+          "Contribution",
+          "Contributions",
+          "How to Contribute"
+        ]
+      }
+    },
+    {
+      "id": "author",
+      "block": "license",
+      "level": 2,
+      "title": {
+        "zh-TW": "作者與聯絡",
+        "en": "Author"
+      },
+      "aliases": {
+        "zh-TW": [
+          "聯絡作者",
+          "聯絡方式",
+          "作者",
+          "聯絡",
+          "關於作者",
+          "作者資訊",
+          "團隊成員",
+          "維護團隊",
+          "維護者",
+          "維護人員",
+          "負責團隊",
+          "負責單位",
+          "負責人",
+          "聯絡窗口",
+          "窗口",
+          "聯絡我們",
+          "有問題找誰"
+        ],
+        "en": [
+          "Contact",
+          "Author / Contact",
+          "Authors",
+          "Maintainers",
+          "Maintainer",
+          "About the Author",
+          "Team",
+          "Owner",
+          "Owners",
+          "Ownership",
+          "Contact Us",
+          "Support",
+          "Maintained By",
+          "Point of Contact"
+        ]
+      }
+    },
+    {
+      "id": "acknowledgments",
+      "block": "license",
+      "level": 2,
+      "title": {
+        "zh-TW": "致謝",
+        "en": "Acknowledgments"
+      },
+      "aliases": {
+        "zh-TW": [
+          "感謝",
+          "特別感謝"
+        ],
+        "en": [
+          "Acknowledgements",
+          "Credits",
+          "Thanks"
+        ]
+      }
+    },
+    {
+      "id": "license",
+      "block": "license",
+      "level": 2,
+      "title": {
+        "zh-TW": "授權",
+        "en": "License"
+      },
+      "aliases": {
+        "zh-TW": [
+          "授權條款",
+          "授權方式",
+          "版權",
+          "版權聲明"
+        ],
+        "en": [
+          "Licence",
+          "Licensing",
+          "Copyright"
+        ]
+      }
+    }
+  ],
+  "combined": [
+    {
+      "sections": [
+        "demo",
+        "screenshots"
+      ],
+      "aliases": {
+        "zh-TW": [
+          "線上展示與畫面",
+          "展示與畫面",
+          "線上展示與截圖"
+        ],
+        "en": [
+          "Demo and Screenshots",
+          "Demo & Screenshots"
+        ]
+      }
+    }
+  ]
+}

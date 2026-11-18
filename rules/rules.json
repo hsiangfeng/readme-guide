@@ -1,0 +1,3575 @@
+{
+  "version": 1,
+  "severities": {
+    "error": {
+      "zh-TW": "錯誤",
+      "en": "Error"
+    },
+    "warning": {
+      "zh-TW": "警告",
+      "en": "Warning"
+    }
+  },
+  "statuses": {
+    "implemented": {
+      "zh-TW": "已實作",
+      "en": "Implemented"
+    },
+    "planned": {
+      "zh-TW": "規劃中",
+      "en": "Planned"
+    }
+  },
+  "categories": [
+    {
+      "id": "structure",
+      "name": {
+        "zh-TW": "結構",
+        "en": "Structure"
+      }
+    },
+    {
+      "id": "unfinished",
+      "name": {
+        "zh-TW": "還沒填完",
+        "en": "Unfinished"
+      }
+    },
+    {
+      "id": "commands",
+      "name": {
+        "zh-TW": "指令",
+        "en": "Commands"
+      }
+    },
+    {
+      "id": "versions",
+      "name": {
+        "zh-TW": "版本",
+        "en": "Versions"
+      }
+    },
+    {
+      "id": "env",
+      "name": {
+        "zh-TW": "環境變數",
+        "en": "Environment variables"
+      }
+    },
+    {
+      "id": "security",
+      "name": {
+        "zh-TW": "安全",
+        "en": "Security"
+      }
+    },
+    {
+      "id": "images",
+      "name": {
+        "zh-TW": "圖片",
+        "en": "Images"
+      }
+    },
+    {
+      "id": "links",
+      "name": {
+        "zh-TW": "連結",
+        "en": "Links"
+      }
+    },
+    {
+      "id": "license",
+      "name": {
+        "zh-TW": "授權與作者",
+        "en": "License and author"
+      }
+    },
+    {
+      "id": "language",
+      "name": {
+        "zh-TW": "語言",
+        "en": "Language"
+      }
+    },
+    {
+      "id": "ai-readability",
+      "name": {
+        "zh-TW": "AI 讀得懂",
+        "en": "Readable for AI"
+      }
+    },
+    {
+      "id": "type-specific",
+      "name": {
+        "zh-TW": "類型專屬",
+        "en": "Type-specific"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "STR001",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "檔名用 README.md",
+        "en": "Name the file README.md"
+      },
+      "description": {
+        "zh-TW": "專案根目錄的說明檔叫 README.md（全大寫加 .md），GitHub 和各種工具都認這個名字。",
+        "en": "Call the file at the project root README.md (capital letters plus .md). GitHub and most tools look for that exact name."
+      },
+      "fix": {
+        "zh-TW": "把檔名改成 README.md。",
+        "en": "Rename the file to README.md."
+      },
+      "messages": {}
+    },
+    {
+      "id": "STR002",
+      "block": "title",
+      "category": "structure",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "第一行是唯一的一級標題",
+        "en": "The first line is the only top-level heading"
+      },
+      "description": {
+        "zh-TW": "專案名稱用 `# 專案名稱` 寫在最上面，整份文件只能有這一個一級標題。人一打開就知道這是什麼，AI 和工具也靠它找到專案名稱。",
+        "en": "Put the project name at the very top as `# Project name`, and use only one top-level heading in the whole file. Readers see what it is right away, and AI and tools rely on it to find the project name."
+      },
+      "fix": {
+        "zh-TW": "把徽章、圖片和說明移到標題下面；其他一級標題改成二級標題（`##`）。",
+        "en": "Move badges, images and notes below the title, and turn any other top-level heading into a second-level heading (`##`)."
+      },
+      "messages": {
+        "notFirst": {
+          "zh-TW": "第一行不是一級標題，標題前面還有其他內容",
+          "en": "Something comes before the top-level heading"
+        },
+        "missing": {
+          "zh-TW": "整份文件沒有一級標題（`# 專案名稱`）",
+          "en": "There is no top-level heading (`# Project name`)"
+        },
+        "extra": {
+          "zh-TW": "這是第 {count} 個一級標題，一級標題只能有一個",
+          "en": "This is top-level heading number {count}; only one is allowed"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "![巷口早餐店](docs/images/banner.png)",
+            "",
+            "# 巷口早餐店｜線上點餐"
+          ],
+          "after": [
+            "# 巷口早餐店｜線上點餐"
+          ]
+        },
+        "en": {
+          "before": [
+            "![Corner Breakfast](docs/images/banner.png)",
+            "",
+            "# Corner Breakfast"
+          ],
+          "after": [
+            "# Corner Breakfast"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR003",
+      "block": "title",
+      "category": "structure",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "標題下面要有一句話說明",
+        "en": "A one-line description under the title"
+      },
+      "description": {
+        "zh-TW": "一級標題的下一行，用一句話說這個專案做什麼、給誰用。讀者用幾秒鐘決定要不要往下看，AI 也會拿這句當專案的摘要。",
+        "en": "On the line after the title, say in one sentence what the project does and who it is for. Readers decide in seconds whether to keep reading, and AI uses this line as the project summary."
+      },
+      "fix": {
+        "zh-TW": "在標題下一行補一句純文字的說明，例如「讓客人用手機先點餐、到店直接取餐的網頁」。",
+        "en": "Add one plain sentence right under the title, for example \"A web page where customers order on their phone and pick up in the shop.\""
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "標題下面沒有一句話說明",
+          "en": "No one-line description under the title"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "# 巷口早餐店｜線上點餐",
+            "",
+            "狀態：維護中"
+          ],
+          "after": [
+            "# 巷口早餐店｜線上點餐",
+            "",
+            "讓客人用手機先點餐、到店直接取餐的網頁。",
+            "",
+            "狀態：維護中"
+          ]
+        },
+        "en": {
+          "before": [
+            "# Corner Breakfast",
+            "",
+            "Status: maintained"
+          ],
+          "after": [
+            "# Corner Breakfast",
+            "",
+            "A web page where customers order breakfast on their phone and pick it up at the shop.",
+            "",
+            "Status: maintained"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR004",
+      "block": "title",
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫出專案狀態",
+        "en": "State the project status"
+      },
+      "description": {
+        "zh-TW": "在一句話說明下面加一行狀態，例如「狀態：維護中」。讀者和 AI 才知道這個專案還有沒有人管、能不能拿來用。",
+        "en": "Add one line under the description with the status, for example \"Status: maintained\". Readers and AI then know whether anyone still looks after it."
+      },
+      "fix": {
+        "zh-TW": "在一句話說明下一行加一行「狀態：」開頭的文字，從開發中、已完成、維護中、練習用、不再維護選一個。",
+        "en": "Add a line starting with \"Status:\" under the description, choosing one of: in development, completed, maintained, practice project, no longer maintained."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "沒有寫專案狀態（例如「狀態：維護中」）",
+          "en": "No project status (for example \"Status: maintained\")"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "讓客人用手機先點餐、到店直接取餐的網頁。"
+          ],
+          "after": [
+            "讓客人用手機先點餐、到店直接取餐的網頁。",
+            "",
+            "狀態：維護中"
+          ]
+        },
+        "en": {
+          "before": [
+            "A web page where customers order breakfast on their phone and pick it up at the shop."
+          ],
+          "after": [
+            "A web page where customers order breakfast on their phone and pick it up at the shop.",
+            "",
+            "Status: maintained"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR005",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "標題不要跳級",
+        "en": "Do not skip heading levels"
+      },
+      "description": {
+        "zh-TW": "標題要一層一層往下，二級（`##`）下面接三級（`###`），不要直接跳到四級。跳級會讓人和 AI 看不出段落之間的上下關係。",
+        "en": "Go down one level at a time: a second-level heading (`##`) is followed by a third-level one (`###`), never straight to the fourth. Skipping levels hides how sections relate, for people and for AI."
+      },
+      "fix": {
+        "zh-TW": "把這個標題改成只比上一個標題多一層。",
+        "en": "Make this heading only one level deeper than the one before it."
+      },
+      "messages": {
+        "skip": {
+          "zh-TW": "標題從第 {from} 級直接跳到第 {to} 級",
+          "en": "Heading jumps from level {from} to level {to}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "## 安裝與執行",
+            "",
+            "#### 環境需求"
+          ],
+          "after": [
+            "## 安裝與執行",
+            "",
+            "### 環境需求"
+          ]
+        },
+        "en": {
+          "before": [
+            "## Getting Started",
+            "",
+            "#### Requirements"
+          ],
+          "after": [
+            "## Getting Started",
+            "",
+            "### Requirements"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR006",
+      "block": null,
+      "category": "structure",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "依專案類型，必填的章節都要有",
+        "en": "Every section the project type requires is there"
+      },
+      "description": {
+        "zh-TW": "每種專案類型都有一定要寫的章節，例如網頁專案要有「功能」「使用技術」「安裝與執行」底下的「環境需求」與「安裝步驟」、「作者與聯絡」。標題要用指南的名稱或可接受的別名，人和 AI 才找得到。「授權」只有公開的專案要寫，由另一條規則（LIC001）檢查；後端 API 的「API 文件」也由專門的規則（TYPE-API001）檢查。",
+        "en": "Each project type has sections it must include; a web app, for example, needs Features, Tech Stack, Getting Started with Requirements and Installation, and Author. Use the guide's heading names (or an accepted alternative) so people and AI can find them. A License section is only needed for public projects and is checked by a separate rule (LIC001); a backend API's API Documentation is checked by TYPE-API001."
+      },
+      "fix": {
+        "zh-TW": "照指南的標題名稱補上缺的章節；如果其實有寫、只是標題名稱不一樣，改成指南的名稱。",
+        "en": "Add the missing section using the guide's heading name. If the content is there under a different heading, rename the heading."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "缺少「{section}」章節（{type}必填）",
+          "en": "Missing the \"{section}\" section (required for the {type} type)"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 使用技術",
+            "",
+            "- Vue 3",
+            "- Vite 6",
+            "- Vitest 3"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## Tech Stack",
+            "",
+            "- Vue 3",
+            "- Vite 6",
+            "- Vitest 3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR007",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "章節照八塊的順序排",
+        "en": "Sections follow the order of the eight blocks"
+      },
+      "description": {
+        "zh-TW": "章節的順序是固定的：先回答「這是什麼」，再來「怎麼跑起來」，最後是「怎麼改、能不能用」。順序固定，人掃得快，AI 也讀得準。",
+        "en": "The order is fixed: first \"What is it?\", then \"How do I run it?\", then \"How do I change it, and may I use it?\". A predictable order is quick for people to scan and easy for AI to read."
+      },
+      "fix": {
+        "zh-TW": "照八塊的順序調整章節的位置。",
+        "en": "Move the section so the blocks appear in order."
+      },
+      "messages": {
+        "order": {
+          "zh-TW": "「{heading}」（第 {number} 塊）應該放在「{before}」（第 {beforeNumber} 塊）前面",
+          "en": "\"{heading}\" (block {number}) should come before \"{before}\" (block {beforeNumber})"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "## 功能",
+            "…",
+            "## 畫面",
+            "…"
+          ],
+          "after": [
+            "## 畫面",
+            "…",
+            "## 功能",
+            "…"
+          ]
+        },
+        "en": {
+          "before": [
+            "## Features",
+            "…",
+            "## Screenshots",
+            "…"
+          ],
+          "after": [
+            "## Screenshots",
+            "…",
+            "## Features",
+            "…"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR008",
+      "block": "license",
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "「授權」放在最後",
+        "en": "The license section comes last"
+      },
+      "description": {
+        "zh-TW": "「授權」固定是最後一個章節，想知道能不能用的人直接捲到最下面就找得到。",
+        "en": "The license is always the last section, so anyone asking \"may I use this?\" just scrolls to the bottom."
+      },
+      "fix": {
+        "zh-TW": "把「授權」移到最後；「致謝」「貢獻方式」這類章節放在它前面。",
+        "en": "Move the license section to the end; put sections such as Acknowledgments or Contributing before it."
+      },
+      "messages": {
+        "notLast": {
+          "zh-TW": "「授權」後面還有「{heading}」，授權要放在最後",
+          "en": "\"{heading}\" comes after the license; the license section goes last"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "## 授權",
+            "…",
+            "## 作者與聯絡",
+            "…"
+          ],
+          "after": [
+            "## 作者與聯絡",
+            "…",
+            "## 授權",
+            "…"
+          ]
+        },
+        "en": {
+          "before": [
+            "## License",
+            "…",
+            "## Author",
+            "…"
+          ],
+          "after": [
+            "## Author",
+            "…",
+            "## License",
+            "…"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR009",
+      "block": null,
+      "category": "structure",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "不要留空的章節",
+        "en": "No empty sections"
+      },
+      "description": {
+        "zh-TW": "有標題就要有內容。空的章節會讓人以為漏寫了，AI 也可能自己亂補。",
+        "en": "A heading needs content under it. An empty section looks like something is missing, and AI may fill the gap with guesses."
+      },
+      "fix": {
+        "zh-TW": "補上內容，或把這個標題刪掉。",
+        "en": "Add the content or delete the heading."
+      },
+      "messages": {
+        "empty": {
+          "zh-TW": "「{heading}」底下沒有內容",
+          "en": "\"{heading}\" has no content"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "### 執行測試"
+          ],
+          "after": [
+            "### 執行測試",
+            "",
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [
+            "### Running Tests"
+          ],
+          "after": [
+            "### Running Tests",
+            "",
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR010",
+      "block": null,
+      "category": "unfinished",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "不要留下舊範本的文字",
+        "en": "No leftover text from an old template"
+      },
+      "description": {
+        "zh-TW": "從範本複製來的提醒（「請斟酌」「請務必依據你的專案來調整內容」）、假的 email（example@example.com）、單獨一行的「...」都要刪掉或換成真的內容，不然讀者和 AI 分不出哪些是真的。",
+        "en": "Reminders copied from a template (\"adjust this to your project\"), fake emails such as example@example.com and lines with only \"...\" must be removed or replaced with real content; otherwise readers and AI cannot tell what is real."
+      },
+      "fix": {
+        "zh-TW": "換成專案真正的內容，或整段刪掉。",
+        "en": "Replace it with the project's real content, or delete it."
+      },
+      "messages": {
+        "phrase": {
+          "zh-TW": "還留著範本的文字「{text}」",
+          "en": "Template text is still here: \"{text}\""
+        },
+        "ellipsis": {
+          "zh-TW": "單獨一行的「...」，看起來是範本還沒寫完的地方",
+          "en": "A line with only \"...\", which looks like an unfinished template"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "- [x] 依分類瀏覽菜單與價格",
+            "- [x] 把餐點加進購物車、選擇取餐時間後送出訂單",
+            "..."
+          ],
+          "after": [
+            "- [x] 依分類瀏覽菜單與價格",
+            "- [x] 把餐點加進購物車、選擇取餐時間後送出訂單"
+          ]
+        },
+        "en": {
+          "before": [
+            "- [x] Browse the menu and prices by category",
+            "- [x] Add dishes to the cart, pick a pickup time and place the order",
+            "..."
+          ],
+          "after": [
+            "- [x] Browse the menu and prices by category",
+            "- [x] Add dishes to the cart, pick a pickup time and place the order"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR011",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "同一層的標題不要重複",
+        "en": "No duplicate headings at the same level"
+      },
+      "description": {
+        "zh-TW": "同一個章節底下出現兩個一樣的標題，連結和 AI 都分不出是哪一個。",
+        "en": "Two identical headings under the same parent make links and AI unable to tell them apart."
+      },
+      "fix": {
+        "zh-TW": "合併成一個，或改成能區分的名稱。",
+        "en": "Merge them or give them distinct names."
+      },
+      "messages": {}
+    },
+    {
+      "id": "STR012",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "不要用粗體字代替標題",
+        "en": "Do not use bold text as a heading"
+      },
+      "description": {
+        "zh-TW": "整行粗體看起來像標題，但它不是，目錄和 AI 都抓不到。",
+        "en": "A bold line looks like a heading but is not one, so outlines and AI miss it."
+      },
+      "fix": {
+        "zh-TW": "改成真正的標題（`###`）。",
+        "en": "Turn it into a real heading (`###`)."
+      },
+      "messages": {}
+    },
+    {
+      "id": "STR013",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "手寫目錄的連結要對得到標題",
+        "en": "A hand-written table of contents points at real headings"
+      },
+      "description": {
+        "zh-TW": "README 超過 100 行可以加目錄；有加目錄，每個連結都要連得到對應的標題。",
+        "en": "A README longer than 100 lines may have a table of contents; if it does, every entry must reach its heading."
+      },
+      "fix": {
+        "zh-TW": "更新目錄，讓每個連結都對到現在的標題。",
+        "en": "Update the table of contents to match the current headings."
+      },
+      "messages": {}
+    },
+    {
+      "id": "STR014",
+      "block": "title",
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "一句話說明用純文字，不要太長",
+        "en": "Keep the one-line description plain and short"
+      },
+      "description": {
+        "zh-TW": "一句話說明不要用引用格式（`>` 開頭），中文 60 字、英文 120 個字元以內。引用格式在 GitHub 上看起來像在引述別人，太長就不是一句話了。",
+        "en": "Do not write the description as a quote (starting with `>`), and keep it within 120 characters in English or 60 in Chinese. A quote looks like someone else's words on GitHub, and a long one stops being one line."
+      },
+      "fix": {
+        "zh-TW": "拿掉開頭的 `>`；太長就只留「做什麼、給誰用」，其他移到「功能」。",
+        "en": "Remove the leading `>`. If it is too long, keep only what it does and who it is for, and move the rest to Features."
+      },
+      "messages": {
+        "quote": {
+          "zh-TW": "一句話說明用了引用格式（`>`）",
+          "en": "The one-line description is written as a quote (`>`)"
+        },
+        "tooLong": {
+          "zh-TW": "一句話說明有 {length} 個字，建議在 {max} 個字以內",
+          "en": "The one-line description is {length} characters long; keep it within {max}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "> 讓客人用手機先點餐、到店直接取餐的網頁。"
+          ],
+          "after": [
+            "讓客人用手機先點餐、到店直接取餐的網頁。"
+          ]
+        },
+        "en": {
+          "before": [
+            "> A web page where customers order breakfast on their phone and pick it up at the shop."
+          ],
+          "after": [
+            "A web page where customers order breakfast on their phone and pick it up at the shop."
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR015",
+      "block": null,
+      "category": "unfinished",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "範本的待填文字都要換掉",
+        "en": "Every template blank is filled in"
+      },
+      "description": {
+        "zh-TW": "指南的範本用 `{{請填：…}}` 標出要填的地方，成品裡一個都不能留。說明只有刪節號的 `{{請填：…}}` 是在介紹這個寫法本身，不算還沒填。",
+        "en": "The guide's templates mark every blank with `{{FILL: …}}`. None may be left in the finished README. A blank whose description is only an ellipsis, such as `{{FILL: …}}`, is talking about the syntax itself and is not reported."
+      },
+      "fix": {
+        "zh-TW": "換成專案真正的內容；查不到的資料先問專案負責人，不要自己編。用不到的段落就整段刪掉。",
+        "en": "Replace it with the project's real content. Ask the project owner about anything you cannot find instead of making it up, and delete parts that do not apply."
+      },
+      "messages": {
+        "placeholder": {
+          "zh-TW": "還有沒填的地方：{text}",
+          "en": "Still to fill in: {text}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "[巷口早餐店線上點餐]({{請填：線上網址}})"
+          ],
+          "after": [
+            "[巷口早餐店線上點餐](https://zaocan.github.io/breakfast-order/)"
+          ]
+        },
+        "en": {
+          "before": [
+            "[Corner Breakfast online ordering]({{FILL:live-url}})"
+          ],
+          "after": [
+            "[Corner Breakfast online ordering](https://zaocan.github.io/breakfast-order/)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR016",
+      "block": "structure",
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "「資料夾結構」列出的項目要存在",
+        "en": "Folders listed in Project Structure exist"
+      },
+      "description": {
+        "zh-TW": "「資料夾結構」列了專案裡根本沒有的資料夾或檔案，多半是從範本或舊版本照抄的，照著找會找不到。只檢查最上層、結尾是 `/` 的資料夾或有副檔名的檔案；看不懂的寫法、`node_modules` 這類不會放進 repo 的資料夾、有 `*` 或 `…` 的項目都不檢查。",
+        "en": "Listing folders or files that do not exist, usually copied from a template or an older version, sends readers looking for nothing. Only top-level entries ending in `/` or with a file extension are checked; unfamiliar layouts, folders that never go into the repository such as `node_modules`, and entries with `*` or `…` are skipped."
+      },
+      "fix": {
+        "zh-TW": "刪掉不存在的項目，或改成專案裡真正的名稱。",
+        "en": "Remove entries that do not exist, or change them to the real names."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "「資料夾結構」列了 {name}，專案裡找不到",
+          "en": "Project Structure lists {name}, but it does not exist in the project"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "```text",
+            "src/     畫面與程式",
+            "views/   頁面",
+            "```"
+          ],
+          "after": [
+            "```text",
+            "src/     頁面、元件與呼叫 API 的函式",
+            "public/  不經過打包、直接提供的檔案",
+            "docs/    README 用的截圖",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [
+            "```text",
+            "src/     Screens and code",
+            "views/   Pages",
+            "```"
+          ],
+          "after": [
+            "```text",
+            "src/     Pages, components and API calls",
+            "public/  Files served as they are, without bundling",
+            "docs/    Screenshots used in this README",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "STR017",
+      "block": null,
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "標題用指南的正式名稱",
+        "en": "Headings use the guide's official names"
+      },
+      "description": {
+        "zh-TW": "「專案技術」「資料夾說明」這類別名檢查工具認得，但每份 README 用一樣的標題，人和 AI 找起來最快。內部專案常見的「維護團隊」「負責人」等寫法是否也要提醒，實作前再決定。",
+        "en": "Alternatives such as \"Built With\" or \"Folder Structure\" are recognized, but the same headings in every README are fastest to scan for people and AI. Whether to flag internal-project alternatives such as \"Owners\" will be decided before this is implemented."
+      },
+      "fix": {
+        "zh-TW": "把標題改成指南的正式名稱，例如「專案技術」改成「使用技術」。",
+        "en": "Rename the heading to the guide's official name, for example \"Built With\" to \"Tech Stack\"."
+      },
+      "messages": {}
+    },
+    {
+      "id": "CMD001",
+      "block": "install",
+      "category": "commands",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "「安裝與執行」至少有一個指令區塊",
+        "en": "Getting Started has at least one command block"
+      },
+      "description": {
+        "zh-TW": "安裝與啟動的指令要放在程式碼區塊裡，讀者才能直接複製，AI 才知道要執行什麼。",
+        "en": "Install and start commands belong in code blocks so readers can copy them and AI knows exactly what to run."
+      },
+      "fix": {
+        "zh-TW": "把指令放進 ```bash 區塊。",
+        "en": "Put the commands in a ```bash block."
+      },
+      "messages": {}
+    },
+    {
+      "id": "CMD002",
+      "block": null,
+      "relatedBlocks": [
+        "install"
+      ],
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "程式碼區塊要標語言",
+        "en": "Code blocks name their language"
+      },
+      "description": {
+        "zh-TW": "程式碼區塊開頭的 ``` 後面寫上語言（`bash`、`json`、`text`），GitHub 才會正確上色，AI 也分得出哪些是要執行的指令。",
+        "en": "Write the language after the opening ``` (`bash`, `json`, `text`) so GitHub colors it correctly and AI can tell commands from other text."
+      },
+      "fix": {
+        "zh-TW": "在 ``` 後面加上語言，例如 ```bash；純文字或執行結果用 ```text。",
+        "en": "Add the language after ```, for example ```bash; use ```text for plain output."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "程式碼區塊沒有標語言",
+          "en": "Code block has no language"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "```",
+            "pnpm test",
+            "```"
+          ],
+          "after": [
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [
+            "```",
+            "pnpm test",
+            "```"
+          ],
+          "after": [
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CMD003",
+      "block": null,
+      "relatedBlocks": [
+        "install"
+      ],
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "指令前面不要加 $",
+        "en": "No $ in front of commands"
+      },
+      "description": {
+        "zh-TW": "指令前面加 `$`，複製貼上時會連 `$` 一起貼，執行就失敗。要示範執行結果，輸入和結果分成兩個區塊，或把示範區塊的語言標成 `console`。",
+        "en": "A `$` in front of a command gets copied along with it and the command fails. To show output, put input and output in separate blocks, or mark the demo block as `console`."
+      },
+      "fix": {
+        "zh-TW": "刪掉每行開頭的 `$ `。",
+        "en": "Remove the leading `$ ` from each line."
+      },
+      "messages": {
+        "prompt": {
+          "zh-TW": "指令前面有提示符號 `$`（{lines}），複製貼上會執行失敗",
+          "en": "Commands start with a `$` prompt ({lines}); copying them will fail"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "```bash",
+            "$ pnpm test",
+            "```"
+          ],
+          "after": [
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [
+            "```bash",
+            "$ pnpm test",
+            "```"
+          ],
+          "after": [
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CMD004",
+      "block": "install",
+      "category": "commands",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "指令用的套件管理工具跟專案一致",
+        "en": "Commands use the project's package manager"
+      },
+      "description": {
+        "zh-TW": "專案用哪個套件管理工具，看專案裡鎖定版本的檔案（例如 `pnpm-lock.yaml`）和 package.json 的 `packageManager`。README 寫別的管理器，照做會裝出不一樣的版本，甚至裝不起來。",
+        "en": "The project's package manager is shown by its lock file (for example `pnpm-lock.yaml`) and the `packageManager` field in package.json. Commands for a different one install different versions or fail."
+      },
+      "fix": {
+        "zh-TW": "把指令換成專案用的套件管理工具，例如 `npm install` 改成 `pnpm install`、`npm run dev` 改成 `pnpm dev`。",
+        "en": "Switch the commands to the project's package manager, for example `npm install` to `pnpm install` and `npm run dev` to `pnpm dev`."
+      },
+      "messages": {
+        "mismatch": {
+          "zh-TW": "寫的是 {used}，專案實際用的是 {expected}（依據 {evidence}）",
+          "en": "This uses {used}, but the project uses {expected} (see {evidence})"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "npm install",
+            "cp .env.example .env",
+            "npm run dev"
+          ],
+          "after": [
+            "pnpm install",
+            "cp .env.example .env",
+            "pnpm dev"
+          ]
+        },
+        "en": {
+          "before": [
+            "npm install",
+            "cp .env.example .env",
+            "npm run dev"
+          ],
+          "after": [
+            "pnpm install",
+            "cp .env.example .env",
+            "pnpm dev"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CMD005",
+      "block": "install",
+      "category": "commands",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "指令要對得到 package.json 的 scripts",
+        "en": "Commands match the scripts in package.json"
+      },
+      "description": {
+        "zh-TW": "`npm run dev`、`pnpm build` 這類指令，後面的名稱要在 package.json 的 `scripts` 裡找得到，不然一執行就失敗。",
+        "en": "The name in commands such as `npm run dev` or `pnpm build` must exist under `scripts` in package.json, or the command fails immediately."
+      },
+      "fix": {
+        "zh-TW": "改成 package.json 裡真的有的名稱，或在 `scripts` 補上這個指令。",
+        "en": "Use a name that exists in package.json, or add the script to `scripts`."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "package.json 沒有「{script}」這個指令（有的是：{available}）",
+          "en": "package.json has no \"{script}\" script (available: {available})"
+        },
+        "noScripts": {
+          "zh-TW": "package.json 沒有任何 scripts，「{script}」執行不了",
+          "en": "package.json has no scripts, so \"{script}\" cannot run"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "pnpm serve"
+          ],
+          "after": [
+            "pnpm dev"
+          ]
+        },
+        "en": {
+          "before": [
+            "pnpm serve"
+          ],
+          "after": [
+            "pnpm dev"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CMD006",
+      "block": "install",
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "git clone 的網址是這個專案",
+        "en": "The git clone URL points at this project"
+      },
+      "description": {
+        "zh-TW": "`git clone` 後面的網址要是這個專案在 GitHub 上的網址，複製範本時最常忘記改。",
+        "en": "The URL after `git clone` must be this project's own address; it is the line most often left unchanged from a template."
+      },
+      "fix": {
+        "zh-TW": "換成這個專案的網址。",
+        "en": "Replace it with this project's URL."
+      },
+      "messages": {}
+    },
+    {
+      "id": "CMD007",
+      "block": "install",
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "cd 的資料夾名稱跟專案一致",
+        "en": "The cd folder name matches the project"
+      },
+      "description": {
+        "zh-TW": "clone 完要 `cd` 進去的資料夾名稱，要跟 repo 名稱一樣。",
+        "en": "The folder you `cd` into after cloning must match the repository name."
+      },
+      "fix": {
+        "zh-TW": "改成 repo 的名稱。",
+        "en": "Use the repository name."
+      },
+      "messages": {}
+    },
+    {
+      "id": "CMD008",
+      "block": null,
+      "relatedBlocks": [
+        "install"
+      ],
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "指令區塊裡只放指令",
+        "en": "Command blocks contain only commands"
+      },
+      "description": {
+        "zh-TW": "標成 `bash`、`sh` 的區塊，讀者會整段複製到終端機執行，AI 也可能直接執行。說明文字、帳號密碼、要用瀏覽器打開的網址放在裡面，複製貼上就會出錯。",
+        "en": "Readers paste `bash` and `sh` blocks straight into a terminal, and AI may run them as they are. Explanations, logins or a URL meant for the browser inside them break that."
+      },
+      "fix": {
+        "zh-TW": "說明改寫在區塊外面；帳號密碼改用清單或表格；要用瀏覽器打開的網址改成一般文字或連結。",
+        "en": "Move explanations outside the block, list logins in a list or table, and write browser URLs as normal text or a link."
+      },
+      "messages": {
+        "account": {
+          "zh-TW": "指令區塊裡有帳號或密碼，這不是指令",
+          "en": "A login inside a command block; it is not a command"
+        },
+        "text": {
+          "zh-TW": "指令區塊裡有說明文字，這不是指令",
+          "en": "Explanatory text inside a command block; it is not a command"
+        },
+        "url": {
+          "zh-TW": "指令區塊裡只有一個網址，這不是指令",
+          "en": "A bare URL inside a command block; it is not a command"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "pnpm dev",
+            "http://localhost:5173",
+            "```"
+          ],
+          "after": [
+            "pnpm dev",
+            "```",
+            "",
+            "打開 http://localhost:5173，看到菜單就成功了。"
+          ]
+        },
+        "en": {
+          "before": [
+            "pnpm dev",
+            "http://localhost:5173",
+            "```"
+          ],
+          "after": [
+            "pnpm dev",
+            "```",
+            "",
+            "Open http://localhost:5173 in your browser; once you see the menu, it is running."
+          ]
+        }
+      }
+    },
+    {
+      "id": "CMD009",
+      "block": null,
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "指令裡要替換的地方要說明",
+        "en": "Explain any part of a command that must be replaced"
+      },
+      "description": {
+        "zh-TW": "指令裡有 `YOUR_TOKEN` 這類要換掉的字，區塊下面要說明換成什麼。",
+        "en": "If a command contains something like `YOUR_TOKEN`, say right below the block what to replace it with."
+      },
+      "fix": {
+        "zh-TW": "在區塊下方說明每個要替換的字。",
+        "en": "Explain each value to replace below the block."
+      },
+      "messages": {}
+    },
+    {
+      "id": "CMD010",
+      "block": null,
+      "relatedBlocks": [
+        "install"
+      ],
+      "category": "commands",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "指令裡不能有全形字元",
+        "en": "No full-width characters in commands"
+      },
+      "description": {
+        "zh-TW": "全形空白、全形引號、全形冒號這類字貼到終端機會執行失敗，而且肉眼很難看出來。常見原因是先在文書軟體打好再貼過來。",
+        "en": "Full-width spaces, quotes or colons make a pasted command fail and are hard to see. They usually come from writing the command in a word processor first."
+      },
+      "fix": {
+        "zh-TW": "把全形字元換成半形，例如全形空白換成一般空白、「“”」換成 `\"`。",
+        "en": "Replace them with their normal (half-width) versions, for example a full-width space with a normal space and “” with `\"`."
+      },
+      "messages": {
+        "found": {
+          "zh-TW": "指令裡有全形字元「{char}」",
+          "en": "Full-width character \"{char}\" in a command"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "cp .env.example\u3000.env"
+          ],
+          "after": [
+            "cp .env.example .env"
+          ]
+        },
+        "en": {
+          "before": [
+            "cp .env.example\u3000.env"
+          ],
+          "after": [
+            "cp .env.example .env"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CMD011",
+      "block": "install",
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "本機網址的埠號跟設定一致",
+        "en": "The local URL uses the configured port"
+      },
+      "description": {
+        "zh-TW": "README 寫的 `http://localhost:埠號`，要跟專案設定的埠號一樣。",
+        "en": "The `http://localhost:port` in the README must match the port the project is configured to use."
+      },
+      "fix": {
+        "zh-TW": "照專案設定改埠號。",
+        "en": "Change the port to match the project settings."
+      },
+      "messages": {}
+    },
+    {
+      "id": "CMD012",
+      "block": "install",
+      "category": "commands",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "有測試就寫怎麼跑",
+        "en": "If there are tests, say how to run them"
+      },
+      "description": {
+        "zh-TW": "package.json 有 `test` 指令，README 卻沒寫怎麼跑測試。想改程式的人和 AI 都需要知道改完怎麼確認沒弄壞。",
+        "en": "package.json has a `test` script but the README never says how to run it. Anyone changing the code, including AI, needs to know how to check nothing broke."
+      },
+      "fix": {
+        "zh-TW": "在「安裝與執行」底下加「執行測試」，放一個跑測試的指令。",
+        "en": "Add \"Running Tests\" under Getting Started with the command that runs the tests."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "package.json 有測試指令（{command}），README 沒寫怎麼跑",
+          "en": "package.json has a test script ({command}), but the README never says how to run it"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "### 執行測試",
+            "",
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "### Running Tests",
+            "",
+            "```bash",
+            "pnpm test",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "VER001",
+      "block": "install",
+      "category": "versions",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "有「環境需求」小節（已併入 STR006）",
+        "en": "A Requirements subsection (now part of STR006)"
+      },
+      "description": {
+        "zh-TW": "「環境需求」已經列在每種類型的必填章節，由 STR006 一起檢查，這條保留代號不另外實作。",
+        "en": "Requirements is now a required section for every type and is checked by STR006; this ID is kept for reference only."
+      },
+      "fix": {
+        "zh-TW": "見 STR006。",
+        "en": "See STR006."
+      },
+      "messages": {}
+    },
+    {
+      "id": "VER002",
+      "block": "install",
+      "category": "versions",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "Node.js 版本跟專案設定一致",
+        "en": "The Node.js version matches the project settings"
+      },
+      "description": {
+        "zh-TW": "README 寫的 Node.js 版本，要跟 package.json 的 `engines`、`.nvmrc` 這類檔案對得上。對不上的話，照 README 裝了還是跑不起來。",
+        "en": "The Node.js version in the README must agree with `engines` in package.json and files such as `.nvmrc`. If they disagree, following the README still leaves a project that will not run."
+      },
+      "fix": {
+        "zh-TW": "照專案設定改 README 的版本；如果是設定檔過時，就改設定檔。",
+        "en": "Update the README to match the project settings, or update the settings if they are the outdated part."
+      },
+      "messages": {
+        "mismatch": {
+          "zh-TW": "README 寫 Node.js {readme}，但 {source} 是 {project}",
+          "en": "The README says Node.js {readme}, but {source} says {project}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "- Node.js 16 以上"
+          ],
+          "after": [
+            "- Node.js 22 以上"
+          ]
+        },
+        "en": {
+          "before": [
+            "- Node.js 16 or later"
+          ],
+          "after": [
+            "- Node.js 22 or later"
+          ]
+        }
+      }
+    },
+    {
+      "id": "VER003",
+      "block": "install",
+      "category": "versions",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "套件管理工具版本跟 packageManager 一致",
+        "en": "The package manager version matches packageManager"
+      },
+      "description": {
+        "zh-TW": "README 寫的 pnpm、yarn 版本，要跟 package.json 的 `packageManager` 一致。",
+        "en": "The pnpm or yarn version in the README must match `packageManager` in package.json."
+      },
+      "fix": {
+        "zh-TW": "照 `packageManager` 改版本。",
+        "en": "Match the version in `packageManager`."
+      },
+      "messages": {}
+    },
+    {
+      "id": "VER004",
+      "block": "tech",
+      "category": "versions",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "「使用技術」的主版號跟專案一致",
+        "en": "Tech Stack major versions match the project"
+      },
+      "description": {
+        "zh-TW": "「使用技術」寫的 Vue 3、Vite 6 這類主版號，要跟 package.json 裡的套件版本對得上。",
+        "en": "Major versions listed under Tech Stack, such as Vue 3 or Vite 6, must match the packages in package.json."
+      },
+      "fix": {
+        "zh-TW": "照 package.json 改主版號，不用寫到小版號。",
+        "en": "Match the major version in package.json; minor versions are not needed."
+      },
+      "messages": {}
+    },
+    {
+      "id": "VER005",
+      "block": "install",
+      "category": "versions",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "版本要寫具體數字",
+        "en": "Versions are specific numbers"
+      },
+      "description": {
+        "zh-TW": "「最新版」「16 以上...」這種說法沒辦法確認，過一陣子就不對了。寫具體的版本號或範圍，例如「Node.js 22 以上」。",
+        "en": "Phrases like \"latest version\" cannot be checked and go out of date. Write a specific version or range, for example \"Node.js 22 or later\"."
+      },
+      "fix": {
+        "zh-TW": "改成具體的版本，例如「Node.js 22」「pnpm 10」。",
+        "en": "Use a specific version, for example \"Node.js 22\" or \"pnpm 10\"."
+      },
+      "messages": {
+        "vague": {
+          "zh-TW": "「{text}」不是具體的版本",
+          "en": "\"{text}\" is not a specific version"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "- Node.js 最新版"
+          ],
+          "after": [
+            "- Node.js 22 以上"
+          ]
+        },
+        "en": {
+          "before": [
+            "- Node.js latest version"
+          ],
+          "after": [
+            "- Node.js 22 or later"
+          ]
+        }
+      }
+    },
+    {
+      "id": "VER006",
+      "block": "install",
+      "category": "versions",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "不要要求已經停止支援的版本",
+        "en": "Do not require a version that is no longer supported"
+      },
+      "description": {
+        "zh-TW": "README 要求的 Node.js 版本如果已經停止支援，新手很難裝到，也有安全疑慮。",
+        "en": "A Node.js version that is no longer supported is hard for newcomers to install and may be unsafe."
+      },
+      "fix": {
+        "zh-TW": "升級到還在支援的版本，並更新 README。",
+        "en": "Upgrade to a supported version and update the README."
+      },
+      "messages": {}
+    },
+    {
+      "id": "VER007",
+      "block": "install",
+      "category": "versions",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "專案指定了 Node.js 版本，README 也要寫",
+        "en": "If the project sets a Node.js version, the README states it"
+      },
+      "description": {
+        "zh-TW": "專案有指定 Node.js 版本，README 的「環境需求」也要寫出具體的版本號，不要讓人和 AI 用猜的。",
+        "en": "When the project sets a Node.js version, the README's Requirements must state it too, so nobody has to guess."
+      },
+      "fix": {
+        "zh-TW": "在「環境需求」寫出具體版本，例如「Node.js 22 以上」。",
+        "en": "Write the specific version under Requirements, for example \"Node.js 22 or later\"."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "專案指定了 Node.js {project}（{source}），README 沒寫版本",
+          "en": "The project sets Node.js {project} ({source}), but the README gives no version"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "### 環境需求",
+            "",
+            "- pnpm 10"
+          ],
+          "after": [
+            "### 環境需求",
+            "",
+            "- Node.js 22 以上",
+            "- pnpm 10"
+          ]
+        },
+        "en": {
+          "before": [
+            "### Requirements",
+            "",
+            "- pnpm 10"
+          ],
+          "after": [
+            "### Requirements",
+            "",
+            "- Node.js 22 or later",
+            "- pnpm 10"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV001",
+      "block": "env",
+      "category": "env",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "有 .env.example 就要有「環境變數」章節",
+        "en": "A .env.example means an Environment Variables section"
+      },
+      "description": {
+        "zh-TW": "專案有 `.env.example`，代表要先設定環境變數才能跑。README 要有「環境變數」章節，說明每個變數的用途、是否必填、去哪裡拿。",
+        "en": "A `.env.example` file means settings are needed before the project runs. The README needs an Environment Variables section explaining what each one is for, whether it is required and where to get it."
+      },
+      "fix": {
+        "zh-TW": "加一個「環境變數」章節，用表格列出 `.env.example` 裡的每個變數。",
+        "en": "Add an Environment Variables section with a table of every variable in `.env.example`."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "專案有 {file}，README 卻沒有「環境變數」章節",
+          "en": "The project has {file}, but the README has no Environment Variables section"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 環境變數",
+            "",
+            "| 名稱 | 必填 | 用途 | 去哪裡拿 |",
+            "| ---- | ---- | ---- | ---- |",
+            "| `VITE_API_BASE_URL` | 是 | 點餐 API 的網址 | 啟動點餐 API 後的網址 |"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## Environment Variables",
+            "",
+            "| Name | Required | Purpose | Where to get it |",
+            "| ---- | ---- | ---- | ---- |",
+            "| `VITE_API_BASE_URL` | Yes | Address of the ordering API | Where the ordering API runs |"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV002",
+      "block": "env",
+      "category": "env",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": ".env.example 的變數都要寫到",
+        "en": "Every variable in .env.example is documented"
+      },
+      "description": {
+        "zh-TW": "`.env.example` 裡的每個變數，「環境變數」章節都要寫到，不然別人不知道要填什麼。",
+        "en": "Every variable in `.env.example` must appear in the Environment Variables section, or nobody knows what to fill in."
+      },
+      "fix": {
+        "zh-TW": "在「環境變數」的表格補上這些變數：用途、是否必填、去哪裡拿。",
+        "en": "Add these variables to the table: what each is for, whether it is required, and where to get it."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "「環境變數」沒寫到 {file} 裡的 {names}",
+          "en": "The Environment Variables section does not mention {names} from {file}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "| 名稱 | 必填 | 用途 | 去哪裡拿 |",
+            "| ---- | ---- | ---- | ---- |",
+            "| `VITE_API_BASE_URL` | 是 | 點餐 API 的網址 | 啟動點餐 API 後的網址 |"
+          ],
+          "after": [
+            "| 名稱 | 必填 | 用途 | 去哪裡拿 |",
+            "| ---- | ---- | ---- | ---- |",
+            "| `VITE_API_BASE_URL` | 是 | 點餐 API 的網址 | 啟動點餐 API 後的網址 |",
+            "| `VITE_SHOP_PHONE` | 否 | 頁尾顯示的店家電話 | 店家提供 |"
+          ]
+        },
+        "en": {
+          "before": [
+            "| Name | Required | Purpose | Where to get it |",
+            "| ---- | ---- | ---- | ---- |",
+            "| `VITE_API_BASE_URL` | Yes | Address of the ordering API | Where the ordering API runs |"
+          ],
+          "after": [
+            "| Name | Required | Purpose | Where to get it |",
+            "| ---- | ---- | ---- | ---- |",
+            "| `VITE_API_BASE_URL` | Yes | Address of the ordering API | Where the ordering API runs |",
+            "| `VITE_SHOP_PHONE` | No | Shop phone number shown in the footer | Provided by the shop |"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV003",
+      "block": "env",
+      "category": "env",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "程式用到的環境變數都在 .env.example",
+        "en": "Every variable the code uses is in .env.example"
+      },
+      "description": {
+        "zh-TW": "程式碼讀了某個環境變數，`.env.example` 卻沒有，別人就不知道要設定它。",
+        "en": "If the code reads a variable that `.env.example` does not list, nobody knows to set it."
+      },
+      "fix": {
+        "zh-TW": "把它加進 `.env.example` 和 README。",
+        "en": "Add it to `.env.example` and the README."
+      },
+      "messages": {}
+    },
+    {
+      "id": "ENV004",
+      "block": null,
+      "relatedBlocks": [
+        "env"
+      ],
+      "category": "security",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "不要貼真的金鑰",
+        "en": "No real secret keys"
+      },
+      "description": {
+        "zh-TW": "README 是公開的，貼上去的金鑰、密碼、權杖等於公開給所有人。範例值請用 `your-api-key` 這類明顯是假的文字。",
+        "en": "A README is public, so any key, password or token in it is public too. Use obviously fake example values such as `your-api-key`."
+      },
+      "fix": {
+        "zh-TW": "換成假的範例值，並且到該服務把這組金鑰作廢、重新產生一組。",
+        "en": "Replace it with a fake example value, then revoke the key in that service and create a new one."
+      },
+      "messages": {
+        "found": {
+          "zh-TW": "這裡看起來貼了真的金鑰",
+          "en": "This looks like a real secret key"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "| `ORDER_API_TOKEN` | 是 | 呼叫點餐 API 用的權杖 | `9f3ac1d27e…` |"
+          ],
+          "after": [
+            "| `ORDER_API_TOKEN` | 是 | 呼叫點餐 API 用的權杖 | 店家後台的「API 權杖」頁面 |"
+          ]
+        },
+        "en": {
+          "before": [
+            "| `ORDER_API_TOKEN` | Yes | Token for calling the ordering API | `9f3ac1d27e…` |"
+          ],
+          "after": [
+            "| `ORDER_API_TOKEN` | Yes | Token for calling the ordering API | The \"API tokens\" page of the shop dashboard |"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV005",
+      "block": "env",
+      "category": "security",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": ".env 沒有被放進 repo",
+        "en": ".env is not committed"
+      },
+      "description": {
+        "zh-TW": "`.env` 放的是真的設定，不能放進 repo；放進去的是 `.env.example`。",
+        "en": "`.env` holds real settings and must not be committed; commit `.env.example` instead."
+      },
+      "fix": {
+        "zh-TW": "把 `.env` 從 repo 移除並加進 `.gitignore`，裡面的金鑰全部換新。",
+        "en": "Remove `.env` from the repository, add it to `.gitignore`, and replace every key in it."
+      },
+      "messages": {}
+    },
+    {
+      "id": "ENV006",
+      "block": "env",
+      "category": "security",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "會公開到前端的變數不要放秘密",
+        "en": "Variables exposed to the browser hold no secrets"
+      },
+      "description": {
+        "zh-TW": "`VITE_`、`NEXT_PUBLIC_` 開頭的變數會被打包進網頁，任何人都看得到，名稱裡有 SECRET、PASSWORD 就要小心。",
+        "en": "Variables starting with `VITE_` or `NEXT_PUBLIC_` end up in the web page where anyone can read them; be careful when the name says SECRET or PASSWORD."
+      },
+      "fix": {
+        "zh-TW": "秘密只放在伺服器端的變數。",
+        "en": "Keep secrets in server-side variables only."
+      },
+      "messages": {}
+    },
+    {
+      "id": "ENV007",
+      "block": "env",
+      "category": "env",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "每個變數都寫出必填與否和說明",
+        "en": "Each variable says whether it is required and what it does"
+      },
+      "description": {
+        "zh-TW": "環境變數用一張四欄的表格寫：名稱、必填、用途、去哪裡拿。想多放一欄範例值也可以，範例值要是假的。",
+        "en": "Document variables in a four-column table: name, required, purpose, where to get it. An extra column with a (fake) example value is fine."
+      },
+      "fix": {
+        "zh-TW": "補齊「名稱、必填、用途、去哪裡拿」四欄。",
+        "en": "Fill in all four columns: name, required, purpose, where to get it."
+      },
+      "messages": {}
+    },
+    {
+      "id": "ENV008",
+      "block": "install",
+      "category": "env",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "安裝步驟要提到建立 .env",
+        "en": "Setup steps mention creating .env"
+      },
+      "description": {
+        "zh-TW": "專案有 `.env.example`，安裝步驟就要有一步把它複製成 `.env`，不然照著做會因為少了設定而跑不起來。",
+        "en": "With a `.env.example` in the project, the setup steps need a step that copies it to `.env`; otherwise following them leaves the settings missing."
+      },
+      "fix": {
+        "zh-TW": "在安裝步驟加一個 `cp .env.example .env` 的指令，並說明每個變數請看「環境變數」。",
+        "en": "Add a `cp .env.example .env` step and point to the Environment Variables section for details."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "專案裡有 {file}，安裝步驟卻沒提到",
+          "en": "The project has {file}, but the setup steps never mention it"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "pnpm install",
+            "pnpm dev"
+          ],
+          "after": [
+            "pnpm install",
+            "cp .env.example .env",
+            "pnpm dev"
+          ]
+        },
+        "en": {
+          "before": [
+            "pnpm install",
+            "pnpm dev"
+          ],
+          "after": [
+            "pnpm install",
+            "cp .env.example .env",
+            "pnpm dev"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV009",
+      "block": "env",
+      "category": "env",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "README 不要列 .env.example 沒有的變數",
+        "en": "The README lists no variables missing from .env.example"
+      },
+      "description": {
+        "zh-TW": "README 寫了某個變數，`.env.example` 卻沒有，代表其中一邊過時了。",
+        "en": "A variable in the README that is not in `.env.example` means one of them is out of date."
+      },
+      "fix": {
+        "zh-TW": "兩邊對齊。",
+        "en": "Bring the two back in line."
+      },
+      "messages": {}
+    },
+    {
+      "id": "IMG001",
+      "block": null,
+      "relatedBlocks": [
+        "demo"
+      ],
+      "category": "images",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "圖片要有替代文字",
+        "en": "Images have alt text"
+      },
+      "description": {
+        "zh-TW": "每張圖都要有替代文字（`![這裡](圖片路徑)` 中括號裡的字），說明這張圖要讓人知道什麼。看不到圖的人和 AI 只能讀這段字。",
+        "en": "Every image needs alt text (the words inside the brackets of `![here](image path)`) saying what the image shows. People who cannot see it, and AI, only get this text."
+      },
+      "fix": {
+        "zh-TW": "在中括號裡寫一句話描述圖片的重點，例如「點餐頁：左邊是菜單，右邊是購物車」。",
+        "en": "Write one sentence about what matters in the image, for example \"Order page: menu on the left, cart on the right\"."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "圖片沒有替代文字",
+          "en": "Image has no alt text"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "![](docs/images/order-page.png)"
+          ],
+          "after": [
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](docs/images/order-page.png)"
+          ]
+        },
+        "en": {
+          "before": [
+            "![](docs/images/order-page.png)"
+          ],
+          "after": [
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](docs/images/order-page.png)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "IMG002",
+      "block": null,
+      "relatedBlocks": [
+        "demo"
+      ],
+      "category": "images",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "替代文字要說出圖片的重點",
+        "en": "Alt text says what the image shows"
+      },
+      "description": {
+        "zh-TW": "替代文字不要只寫檔名、「圖片」「截圖」「範例圖片 1」，也不要用「圖片：」開頭，要寫出這張圖讓人知道什麼。",
+        "en": "Alt text should not be a file name, \"image\", \"screenshot\" or \"Image of…\". Say what the reader should learn from the picture."
+      },
+      "fix": {
+        "zh-TW": "改成一句描述重點的話。",
+        "en": "Replace it with one sentence describing what matters."
+      },
+      "messages": {
+        "generic": {
+          "zh-TW": "替代文字「{alt}」沒有說出圖片的重點",
+          "en": "Alt text \"{alt}\" does not say what the image shows"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "![order-page.png](docs/images/order-page.png)"
+          ],
+          "after": [
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](docs/images/order-page.png)"
+          ]
+        },
+        "en": {
+          "before": [
+            "![order-page.png](docs/images/order-page.png)"
+          ],
+          "after": [
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](docs/images/order-page.png)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "IMG003",
+      "block": null,
+      "relatedBlocks": [
+        "demo"
+      ],
+      "category": "images",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "相對路徑的圖片檔要存在",
+        "en": "Images with relative paths exist"
+      },
+      "description": {
+        "zh-TW": "用相對路徑引用的圖片（例如 `docs/images/home.png`），專案裡要真的有這個檔案，不然 GitHub 上會顯示破圖。",
+        "en": "An image referenced by a relative path (for example `docs/images/home.png`) must exist in the project, or GitHub shows a broken image."
+      },
+      "fix": {
+        "zh-TW": "把圖片放到這個路徑，或改成正確的路徑（注意大小寫）。",
+        "en": "Add the image at that path or fix the path (mind upper and lower case)."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "找不到圖片檔 {path}",
+          "en": "Image file not found: {path}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](images/order-page.png)"
+          ],
+          "after": [
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](docs/images/order-page.png)"
+          ]
+        },
+        "en": {
+          "before": [
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](images/order-page.png)"
+          ],
+          "after": [
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](docs/images/order-page.png)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "IMG004",
+      "block": null,
+      "relatedBlocks": [
+        "demo"
+      ],
+      "category": "unfinished",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "不要用佔位圖",
+        "en": "No placeholder images"
+      },
+      "description": {
+        "zh-TW": "fakeimg.pl、placehold.co 這類服務產生的是空白示意圖，代表截圖還沒換上去。",
+        "en": "Services such as fakeimg.pl or placehold.co produce blank stand-in images, which means the real screenshot is still missing."
+      },
+      "fix": {
+        "zh-TW": "換成專案真正的截圖，放在 repo 裡用相對路徑引用（例如 `docs/images/home.png`）。",
+        "en": "Use a real screenshot stored in the repository and referenced by a relative path (for example `docs/images/home.png`)."
+      },
+      "messages": {
+        "found": {
+          "zh-TW": "這是佔位圖（{host}），還沒換成真的截圖",
+          "en": "This is a placeholder image ({host}), not a real screenshot"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](https://fakeimg.pl/800x500/)"
+          ],
+          "after": [
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](docs/images/order-page.png)"
+          ]
+        },
+        "en": {
+          "before": [
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](https://fakeimg.pl/800x500/)"
+          ],
+          "after": [
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](docs/images/order-page.png)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "IMG005",
+      "block": "demo",
+      "category": "images",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "portfolio"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "至少一張畫面或一個線上網址",
+        "en": "At least one screenshot or live link"
+      },
+      "description": {
+        "zh-TW": "網頁專案和作品集，讀者最想先看到長什麼樣子。至少放一張截圖，或一個可以直接打開的線上網址。",
+        "en": "For web apps and portfolios, readers first want to see what it looks like. Include at least one screenshot or a live link they can open."
+      },
+      "fix": {
+        "zh-TW": "在「畫面」放一到三張截圖，或在「線上展示」放網址。",
+        "en": "Add one to three screenshots under Screenshots, or a link under Demo."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "整份文件沒有任何畫面，也沒有線上網址",
+          "en": "No screenshots and no live link anywhere"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 畫面",
+            "",
+            "![點餐頁：上方是分類標籤，下方列出餐點與價格，右下角是購物車按鈕](docs/images/order-page.png)"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## Screenshots",
+            "",
+            "![Order page: category tabs at the top, dishes and prices below, cart button at the bottom right](docs/images/order-page.png)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "IMG006",
+      "block": null,
+      "category": "images",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "圖片檔不要太大",
+        "en": "Image files are not too large"
+      },
+      "description": {
+        "zh-TW": "太大的圖片或動圖會讓 README 打開很慢。",
+        "en": "Very large images or animations make the README slow to open."
+      },
+      "fix": {
+        "zh-TW": "壓縮圖片或縮小尺寸。",
+        "en": "Compress or resize the image."
+      },
+      "messages": {}
+    },
+    {
+      "id": "IMG007",
+      "block": "title",
+      "category": "images",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "不要放人氣徽章",
+        "en": "No popularity badges"
+      },
+      "description": {
+        "zh-TW": "星星數、fork 數、issue 數這類徽章看不出專案品質，新專案顯示 0 反而扣分。要放徽章，就放建置狀態、測試覆蓋率、授權這類。",
+        "en": "Star, fork or issue count badges say nothing about quality, and a new project showing 0 looks worse. If you use badges, show build status, test coverage or license."
+      },
+      "fix": {
+        "zh-TW": "刪掉人氣徽章，最多保留三個跟品質有關的徽章。",
+        "en": "Remove popularity badges and keep at most three quality-related ones."
+      },
+      "messages": {
+        "found": {
+          "zh-TW": "人氣徽章（{kinds}）看不出專案品質",
+          "en": "Popularity badges ({kinds}) say nothing about quality"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "# 巷口早餐店｜線上點餐",
+            "",
+            "![GitHub stars](https://img.shields.io/github/stars/zaocan/breakfast-order)"
+          ],
+          "after": [
+            "# 巷口早餐店｜線上點餐"
+          ]
+        },
+        "en": {
+          "before": [
+            "# Corner Breakfast",
+            "",
+            "![GitHub stars](https://img.shields.io/github/stars/zaocan/breakfast-order)"
+          ],
+          "after": [
+            "# Corner Breakfast"
+          ]
+        }
+      }
+    },
+    {
+      "id": "LNK001",
+      "block": null,
+      "relatedBlocks": [
+        "demo"
+      ],
+      "category": "links",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "相對路徑的連結要連得到",
+        "en": "Relative links point at real files"
+      },
+      "description": {
+        "zh-TW": "連到專案裡其他檔案的連結（例如 `docs/api.md`、`LICENSE`），檔案要真的存在。",
+        "en": "Links to other files in the project (for example `docs/api.md` or `LICENSE`) must point at files that exist."
+      },
+      "fix": {
+        "zh-TW": "補上檔案，或改成正確的路徑（注意大小寫）。",
+        "en": "Add the file or fix the path (mind upper and lower case)."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "找不到連結的檔案 {path}",
+          "en": "Linked file not found: {path}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "MIT，全文見 [LICENSE](LICENSE.md)。"
+          ],
+          "after": [
+            "MIT，全文見 [LICENSE](LICENSE)。"
+          ]
+        },
+        "en": {
+          "before": [
+            "MIT; see [LICENSE](LICENSE.md) for the full text."
+          ],
+          "after": [
+            "MIT; see [LICENSE](LICENSE) for the full text."
+          ]
+        }
+      }
+    },
+    {
+      "id": "LNK002",
+      "block": null,
+      "category": "links",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "連到標題的連結要對得到",
+        "en": "Links to headings reach a real heading"
+      },
+      "description": {
+        "zh-TW": "`#安裝與執行` 這類連到同一份文件標題的連結，標題改名後就會失效。",
+        "en": "Links such as `#getting-started` break when the heading is renamed."
+      },
+      "fix": {
+        "zh-TW": "改成現在的標題。",
+        "en": "Point it at the current heading."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LNK003",
+      "block": null,
+      "category": "links",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "外部連結打得開",
+        "en": "External links open"
+      },
+      "description": {
+        "zh-TW": "連到其他網站的連結要打得開。這條要連網路，建議只在定期檢查時跑。",
+        "en": "Links to other sites must open. This needs the network, so it is best run on a schedule."
+      },
+      "fix": {
+        "zh-TW": "更新或移除失效的連結。",
+        "en": "Update or remove broken links."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LNK004",
+      "block": null,
+      "relatedBlocks": [
+        "demo"
+      ],
+      "category": "links",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "連結文字要說得出連去哪",
+        "en": "Link text says where it goes"
+      },
+      "description": {
+        "zh-TW": "「點這裡」「連結」「here」這種連結文字，用報讀軟體的人和 AI 都不知道會連去哪裡。",
+        "en": "Link text such as \"click here\" or \"link\" tells screen reader users and AI nothing about the destination."
+      },
+      "fix": {
+        "zh-TW": "改成說明目的地的文字，例如「線上展示（GitHub Pages）」。",
+        "en": "Describe the destination instead, for example \"Live demo (GitHub Pages)\"."
+      },
+      "messages": {
+        "vague": {
+          "zh-TW": "連結文字「{text}」看不出會連去哪",
+          "en": "Link text \"{text}\" does not say where it goes"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "[點這裡](https://zaocan.github.io/breakfast-order/)看線上版本。"
+          ],
+          "after": [
+            "[巷口早餐店線上點餐](https://zaocan.github.io/breakfast-order/)"
+          ]
+        },
+        "en": {
+          "before": [
+            "[Click here](https://zaocan.github.io/breakfast-order/) to try it online."
+          ],
+          "after": [
+            "[Corner Breakfast online ordering](https://zaocan.github.io/breakfast-order/)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "LNK005",
+      "block": null,
+      "category": "links",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "網址要做成有文字的連結",
+        "en": "URLs are written as links with text"
+      },
+      "description": {
+        "zh-TW": "直接貼一長串網址不好讀，改成 `[說明文字](網址)`。",
+        "en": "A raw URL is hard to read; write `[description](url)` instead."
+      },
+      "fix": {
+        "zh-TW": "加上連結文字。",
+        "en": "Add link text."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LNK006",
+      "block": null,
+      "category": "links",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "連到自己 repo 的檔案用相對路徑",
+        "en": "Files in your own repository use relative links"
+      },
+      "description": {
+        "zh-TW": "用完整網址連到自己 repo 的檔案，換分支或 fork 之後就會連錯。",
+        "en": "Full URLs to files in your own repository point at the wrong place after a fork or a branch switch."
+      },
+      "fix": {
+        "zh-TW": "改成相對路徑，例如 `docs/api.md`。",
+        "en": "Use a relative path such as `docs/api.md`."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LIC001",
+      "block": "license",
+      "category": "license",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "專案有授權，README 就要有「授權」章節",
+        "en": "A licensed project has a License section"
+      },
+      "description": {
+        "zh-TW": "專案根目錄有授權檔，或 package.json 的 `license` 寫了具體的授權，表示這是開放給別人用的專案，README 要有「授權」章節講清楚能怎麼用。公司內部或不公開的專案沒有授權檔、package.json 寫 `UNLICENSED`，可以不寫授權章節，這條不會提醒。另外，只有 package.json 寫 `ISC`、沒有授權檔時也不提醒，因為那是 npm 建立專案時自動填的預設值，不一定是刻意選的。",
+        "en": "A license file at the project root, or a specific license in the `license` field of package.json, means the project is meant to be reused, so the README needs a License section saying how. Internal or private projects with no license file and `UNLICENSED` in package.json may leave the section out; this rule stays quiet for them. It also stays quiet when package.json says `ISC` and there is no license file, because npm fills that in by default."
+      },
+      "fix": {
+        "zh-TW": "在 README 最後加上「## 授權」，寫出授權名稱並連到 `LICENSE` 檔。如果其實是內部專案，把 package.json 的 `license` 改成 `UNLICENSED`。",
+        "en": "Add \"## License\" at the end of the README, naming the license and linking to the `LICENSE` file. If the project is actually internal, set `license` in package.json to `UNLICENSED`."
+      },
+      "messages": {
+        "file": {
+          "zh-TW": "專案有 {file} 檔（{license}），README 卻沒有「授權」章節",
+          "en": "The project has a {file} file ({license}), but the README has no License section"
+        },
+        "package": {
+          "zh-TW": "package.json 的 license 是 {license}，README 卻沒有「授權」章節",
+          "en": "package.json says the license is {license}, but the README has no License section"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 授權",
+            "",
+            "MIT，全文見 [LICENSE](LICENSE)。"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## License",
+            "",
+            "MIT; see [LICENSE](LICENSE) for the full text."
+          ]
+        }
+      }
+    },
+    {
+      "id": "LIC002",
+      "block": "license",
+      "category": "license",
+      "severity": "error",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "授權在三個地方要一致",
+        "en": "The license agrees in all three places"
+      },
+      "description": {
+        "zh-TW": "README 的「授權」、`LICENSE` 檔、package.json 的 `license`，寫的要是同一種授權。對不上的話，別人不知道到底能不能用。",
+        "en": "The README's License section, the `LICENSE` file and `license` in package.json must name the same license; otherwise nobody knows what is allowed."
+      },
+      "fix": {
+        "zh-TW": "以 LICENSE 檔為準，把另外兩處改成一樣。",
+        "en": "Treat the LICENSE file as the reference and make the other two match it."
+      },
+      "messages": {
+        "mismatch": {
+          "zh-TW": "授權對不上：{details}",
+          "en": "The license does not match: {details}"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "## 授權",
+            "",
+            "Apache-2.0"
+          ],
+          "after": [
+            "## 授權",
+            "",
+            "MIT，全文見 [LICENSE](LICENSE)。"
+          ]
+        },
+        "en": {
+          "before": [
+            "## License",
+            "",
+            "Apache-2.0"
+          ],
+          "after": [
+            "## License",
+            "",
+            "MIT; see [LICENSE](LICENSE) for the full text."
+          ]
+        }
+      }
+    },
+    {
+      "id": "LIC003",
+      "block": "license",
+      "category": "license",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫了授權就要有 LICENSE 檔",
+        "en": "A named license comes with a LICENSE file"
+      },
+      "description": {
+        "zh-TW": "README 寫了開放授權（例如 MIT），專案裡也要有 `LICENSE` 檔放授權全文，GitHub 才認得出來。不開放的話，直接寫「保留所有權利」。",
+        "en": "If the README names an open license (for example MIT), the project needs a `LICENSE` file with the full text so GitHub recognizes it. If it is not open, say \"All rights reserved\"."
+      },
+      "fix": {
+        "zh-TW": "在專案根目錄加 `LICENSE` 檔；不開放就把 README 的授權改成「保留所有權利」。",
+        "en": "Add a `LICENSE` file at the project root, or change the README to \"All rights reserved\" if it is not open."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "README 寫了授權（{license}），專案裡卻沒有 LICENSE 檔",
+          "en": "The README names a license ({license}), but there is no LICENSE file"
+        }
+      }
+    },
+    {
+      "id": "LIC004",
+      "block": "license",
+      "category": "license",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "歡迎別人貢獻，就要寫授權",
+        "en": "Accepting contributions needs a license"
+      },
+      "description": {
+        "zh-TW": "README 有「貢獻方式」，表示歡迎別人一起改程式；但專案和 README 都找不到授權，別人依法不能使用這份程式碼，也不知道自己的修改會怎麼被使用。",
+        "en": "A Contributing section invites others to change the code, but with no license anywhere in the project or the README, nobody may legally reuse it, and contributors do not know how their changes will be used."
+      },
+      "fix": {
+        "zh-TW": "選一種授權，加上 `LICENSE` 檔與「授權」章節；不打算開放的話，拿掉「貢獻方式」。",
+        "en": "Pick a license and add a `LICENSE` file and a License section, or remove the Contributing section if the project is not open."
+      },
+      "messages": {}
+    },
+    {
+      "id": "META001",
+      "block": "title",
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "一句話說明跟 package.json 的 description 一致",
+        "en": "The description matches package.json"
+      },
+      "description": {
+        "zh-TW": "一句話說明、package.json 的 `description`、GitHub repo 的描述最好是同一句。",
+        "en": "The one-line description, `description` in package.json and the repository description should say the same thing."
+      },
+      "fix": {
+        "zh-TW": "三處改成同一句。",
+        "en": "Use the same sentence in all three."
+      },
+      "messages": {}
+    },
+    {
+      "id": "META002",
+      "block": "title",
+      "category": "structure",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "標題對得到 repo 名稱",
+        "en": "The title can be matched to the repository name"
+      },
+      "description": {
+        "zh-TW": "標題跟 repo 名稱差很多時（例如中文名稱），在標題後面用括號附上 repo 名稱，AI 才知道要進哪個資料夾。",
+        "en": "If the title differs a lot from the repository name, add the repository name in brackets so AI knows which folder it is."
+      },
+      "fix": {
+        "zh-TW": "在標題後面加上（`repo 名稱`）。",
+        "en": "Add (`repo-name`) after the title."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LANG001",
+      "block": null,
+      "category": "language",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "翻譯版的檔名用語言代碼",
+        "en": "Translated files use language codes"
+      },
+      "description": {
+        "zh-TW": "其他語言的版本命名成 `README.en.md`、`README.zh-TW.md`。",
+        "en": "Name translated versions like `README.en.md` or `README.zh-TW.md`."
+      },
+      "fix": {
+        "zh-TW": "改檔名。",
+        "en": "Rename the file."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LANG002",
+      "block": null,
+      "category": "language",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "各語言版本的章節一致",
+        "en": "Language versions have the same sections"
+      },
+      "description": {
+        "zh-TW": "不同語言的 README 章節數量與順序要一樣，而且互相連結。",
+        "en": "README files in different languages have the same sections in the same order and link to each other."
+      },
+      "fix": {
+        "zh-TW": "補齊章節並互相加上連結。",
+        "en": "Add the missing sections and link the versions."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LANG003",
+      "block": null,
+      "category": "language",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "用台灣的繁體中文用語",
+        "en": "Use Taiwanese Traditional Chinese terms"
+      },
+      "description": {
+        "zh-TW": "繁體中文版不要出現簡體字和大陸用語，要用「資訊」「預設」「專案」這類台灣用語。",
+        "en": "The Traditional Chinese version should avoid Simplified characters and mainland terms."
+      },
+      "fix": {
+        "zh-TW": "換成台灣用語。",
+        "en": "Use the Taiwanese term."
+      },
+      "messages": {}
+    },
+    {
+      "id": "LANG004",
+      "block": null,
+      "category": "language",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "中英文之間的空格一致（預設關閉）",
+        "en": "Consistent spacing between Chinese and English (off by default)"
+      },
+      "description": {
+        "zh-TW": "中文與英文、數字之間要不要空一格，各團隊習慣不同。這條預設不檢查，專案要用再打開。",
+        "en": "Teams differ on spacing between Chinese and English text, so this is off unless a project turns it on."
+      },
+      "fix": {
+        "zh-TW": "整份文件用同一種寫法。",
+        "en": "Use one style throughout."
+      },
+      "messages": {}
+    },
+    {
+      "id": "AIR001",
+      "block": null,
+      "category": "ai-readability",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "不要寫「如上所述」",
+        "en": "Do not write \"as mentioned above\""
+      },
+      "description": {
+        "zh-TW": "「如上所述」「同上」「as mentioned above」這類說法，段落被單獨拿出來讀就看不懂。AI 常常只讀其中一段。",
+        "en": "Phrases like \"as mentioned above\" or \"see above\" make no sense when a section is read on its own, and AI often reads just one section."
+      },
+      "fix": {
+        "zh-TW": "直接寫出指的是哪裡，例如「照『安裝步驟』的第 3 步」。",
+        "en": "Name what you mean, for example \"step 3 of Installation\"."
+      },
+      "messages": {
+        "found": {
+          "zh-TW": "「{text}」沒說清楚指的是哪裡",
+          "en": "\"{text}\" does not say what it refers to"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "如上所述，打開網址就可以了。"
+          ],
+          "after": [
+            "打開 http://localhost:5173，看到菜單就成功了。"
+          ]
+        },
+        "en": {
+          "before": [
+            "As mentioned above, open the address and you are done."
+          ],
+          "after": [
+            "Open http://localhost:5173 in your browser; once you see the menu, it is running."
+          ]
+        }
+      }
+    },
+    {
+      "id": "AIR002",
+      "block": null,
+      "category": "ai-readability",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "不要寫模糊的動作",
+        "en": "No vague instructions"
+      },
+      "description": {
+        "zh-TW": "「安裝相關套件」「適當設定」「自行調整」沒說要做什麼，人和 AI 都只能用猜的。",
+        "en": "\"Install the relevant packages\" or \"configure as needed\" does not say what to do, so people and AI have to guess."
+      },
+      "fix": {
+        "zh-TW": "寫出具體的指令或設定值。",
+        "en": "Give the exact command or value."
+      },
+      "messages": {}
+    },
+    {
+      "id": "AIR003",
+      "block": null,
+      "category": "ai-readability",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "章節不要只有圖片",
+        "en": "A section is not only images"
+      },
+      "description": {
+        "zh-TW": "整個章節只有圖片，看不到圖的人和 AI 就什麼都拿不到。",
+        "en": "A section with only images gives nothing to people who cannot see them, or to AI."
+      },
+      "fix": {
+        "zh-TW": "在圖片下面補一句文字說明重點。",
+        "en": "Add a sentence under the image with the key point."
+      },
+      "messages": {}
+    },
+    {
+      "id": "AIR004",
+      "block": "install",
+      "category": "ai-readability",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "同一步只給一種做法",
+        "en": "One way to do each step"
+      },
+      "description": {
+        "zh-TW": "同一步驟同時給 npm、yarn、pnpm 三種指令，新手和 AI 都要多做選擇，也容易混著用。",
+        "en": "Giving npm, yarn and pnpm commands for the same step forces newcomers and AI to choose, and invites mixing them."
+      },
+      "fix": {
+        "zh-TW": "只留專案用的那一種。",
+        "en": "Keep only the one the project uses."
+      },
+      "messages": {}
+    },
+    {
+      "id": "AIR005",
+      "block": null,
+      "category": "ai-readability",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "README 不要寫對 AI 說話的句子",
+        "en": "No instructions aimed at AI in the README"
+      },
+      "description": {
+        "zh-TW": "「你是一個資深工程師」「You are a senior engineer」這種給 AI 的指示不要寫進 README，人讀起來很怪。真的需要，另外放在專門給 AI 的說明檔。",
+        "en": "Lines like \"You are a senior engineer\" are instructions for AI and read oddly to people. If you need them, put them in a separate file meant for AI."
+      },
+      "fix": {
+        "zh-TW": "刪掉這句，改寫成給人看的說明。",
+        "en": "Remove it or rewrite it as an explanation for people."
+      },
+      "messages": {
+        "found": {
+          "zh-TW": "「{text}」是對 AI 說話的句子",
+          "en": "\"{text}\" is an instruction aimed at AI"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "## 作者與聯絡",
+            "",
+            "你是一位資深前端工程師，請幫忙維護這個專案。",
+            "",
+            "是 Ray 不是 Array｜hello@example.com"
+          ],
+          "after": [
+            "## 作者與聯絡",
+            "",
+            "是 Ray 不是 Array｜hello@example.com"
+          ]
+        },
+        "en": {
+          "before": [
+            "## Author",
+            "",
+            "You are a senior frontend engineer. Keep this project up to date.",
+            "",
+            "是 Ray 不是 Array | hello@example.com"
+          ],
+          "after": [
+            "## Author",
+            "",
+            "是 Ray 不是 Array | hello@example.com"
+          ]
+        }
+      }
+    },
+    {
+      "id": "AIR006",
+      "block": null,
+      "category": "ai-readability",
+      "severity": "warning",
+      "types": [
+        "web-app",
+        "course-example",
+        "portfolio",
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "篇幅不要太長",
+        "en": "Keep the length reasonable"
+      },
+      "description": {
+        "zh-TW": "README 太長，人讀不完，AI 也比較容易漏看。細節可以移到 `docs/` 再連過去。",
+        "en": "A very long README is not read to the end, and AI misses more of it. Move details to `docs/` and link to them."
+      },
+      "fix": {
+        "zh-TW": "把細節移到其他文件。",
+        "en": "Move details to other documents."
+      },
+      "messages": {}
+    },
+    {
+      "id": "TYPE-API001",
+      "block": "demo",
+      "category": "type-specific",
+      "severity": "error",
+      "types": [
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫出 API 文件在哪",
+        "en": "Say where the API documentation is"
+      },
+      "description": {
+        "zh-TW": "後端 API 的讀者第一個要找的是 API 文件：本機跑起來在哪個網址、線上版在哪裡。",
+        "en": "Readers of a backend API first look for its documentation: the local address once it runs, and the online version."
+      },
+      "fix": {
+        "zh-TW": "加一個「API 文件」章節，寫出本機與線上的網址。",
+        "en": "Add an API Documentation section with the local and online addresses."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "沒寫 API 文件在哪",
+          "en": "Does not say where the API documentation is"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## API 文件",
+            "",
+            "本機啟動後打開 http://localhost:3000/api-docs，可以看到每支 API 的說明並直接試打。"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## API Documentation",
+            "",
+            "Start the server and open http://localhost:3000/api-docs to read about every endpoint and try it out."
+          ]
+        }
+      }
+    },
+    {
+      "id": "TYPE-API002",
+      "block": "install",
+      "category": "type-specific",
+      "severity": "error",
+      "types": [
+        "backend-api"
+      ],
+      "needsProject": true,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫出怎麼建立資料庫",
+        "en": "Explain how to set up the database"
+      },
+      "description": {
+        "zh-TW": "專案有資料庫的設定，README 就要寫建立資料表、放入測試資料的指令，不然跑起來會因為沒有資料表而失敗。",
+        "en": "If the project has database setup files, the README must give the commands that create the tables and load sample data; otherwise it fails on the first request."
+      },
+      "fix": {
+        "zh-TW": "加一個「建立資料庫」章節，把建立資料表、放入測試資料的指令放進程式碼區塊，一行一個。",
+        "en": "Add a Database Setup section with the commands that create the tables and load sample data in a code block, one per line."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "專案有資料庫設定（{evidence}），README 沒寫怎麼建立資料庫",
+          "en": "The project has database setup ({evidence}), but the README does not explain how to set it up"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 建立資料庫",
+            "",
+            "```bash",
+            "pnpm db:migrate",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## Database Setup",
+            "",
+            "```bash",
+            "pnpm db:migrate",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "TYPE-API003",
+      "block": "install",
+      "category": "type-specific",
+      "severity": "warning",
+      "types": [
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "至少一個請求範例",
+        "en": "At least one request example"
+      },
+      "description": {
+        "zh-TW": "放一個可以直接複製的請求範例（例如 `curl`），再用另一個區塊放回應，讀者和 AI 馬上知道怎麼呼叫。",
+        "en": "Include one request people can copy (for example `curl`) and the response in a separate block, so readers and AI see how to call it."
+      },
+      "fix": {
+        "zh-TW": "在「使用方式」放一個 `curl` 範例和它的回應。",
+        "en": "Add a `curl` example and its response under Usage."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "沒有任何請求範例（例如 curl 指令）",
+          "en": "No request example (for example a curl command)"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [
+            "## 使用方式",
+            "",
+            "打開 `/api/menu` 就會拿到菜單。"
+          ],
+          "after": [
+            "## 使用方式",
+            "",
+            "```bash",
+            "curl http://localhost:3000/api/menu",
+            "```"
+          ]
+        },
+        "en": {
+          "before": [
+            "## Usage",
+            "",
+            "Open `/api/menu` to get the menu."
+          ],
+          "after": [
+            "## Usage",
+            "",
+            "```bash",
+            "curl http://localhost:3000/api/menu",
+            "```"
+          ]
+        }
+      }
+    },
+    {
+      "id": "TYPE-API004",
+      "block": "install",
+      "category": "type-specific",
+      "severity": "warning",
+      "types": [
+        "backend-api"
+      ],
+      "needsProject": false,
+      "status": "planned",
+      "title": {
+        "zh-TW": "請求和回應分開放",
+        "en": "Request and response in separate blocks"
+      },
+      "description": {
+        "zh-TW": "請求指令和回應的內容放在同一個區塊，複製時會連回應一起貼。",
+        "en": "With request and response in one block, copying the command also copies the response."
+      },
+      "fix": {
+        "zh-TW": "拆成兩個區塊。",
+        "en": "Split them into two blocks."
+      },
+      "messages": {}
+    },
+    {
+      "id": "TYPE-PF001",
+      "block": "features",
+      "category": "type-specific",
+      "severity": "warning",
+      "types": [
+        "portfolio"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫出「我負責的部分」",
+        "en": "Include \"My Role\""
+      },
+      "description": {
+        "zh-TW": "作品集的讀者想知道你做了什麼。團隊專案一定要寫自己負責的功能或頁面；一個人做的也寫一句「全部由我獨立完成」。",
+        "en": "Portfolio readers want to know what you did. In a team project list your own features or pages; for a solo project say you built all of it."
+      },
+      "fix": {
+        "zh-TW": "加一個「我負責的部分」章節。",
+        "en": "Add a \"My Role\" section."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "沒有「我負責的部分」",
+          "en": "No \"My Role\" section"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 我負責的部分",
+            "",
+            "- 點餐頁與購物車的畫面和程式",
+            "- 取餐時間的計算與測試"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## My Role",
+            "",
+            "- The order page and cart, both screens and code",
+            "- Pickup time calculation and its tests"
+          ]
+        }
+      }
+    },
+    {
+      "id": "TYPE-PF002",
+      "block": "tech",
+      "category": "type-specific",
+      "severity": "warning",
+      "types": [
+        "portfolio"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫出「為什麼這樣做」",
+        "en": "Include \"Design Decisions\""
+      },
+      "description": {
+        "zh-TW": "選這個框架、這種做法的理由與取捨，最能讓作品跟別人不一樣。",
+        "en": "Why you chose this framework or approach, and what you traded off, is what sets the work apart."
+      },
+      "fix": {
+        "zh-TW": "加一個「為什麼這樣做」章節，寫一兩個決定和理由。",
+        "en": "Add a \"Design Decisions\" section with one or two decisions and why."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "沒有「為什麼這樣做」",
+          "en": "No \"Design Decisions\" section"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 為什麼這樣做",
+            "",
+            "購物車的金額只在一個函式裡算，畫面只負責顯示，金額算錯時只要查一個地方。"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## Design Decisions",
+            "",
+            "Cart totals are calculated in one function and the screens only display them, so a wrong total means checking one place."
+          ]
+        }
+      }
+    },
+    {
+      "id": "TYPE-CS002",
+      "block": "features",
+      "category": "type-specific",
+      "severity": "warning",
+      "types": [
+        "course-example"
+      ],
+      "needsProject": false,
+      "status": "implemented",
+      "title": {
+        "zh-TW": "寫出對應的課程單元",
+        "en": "Say which lesson it belongs to"
+      },
+      "description": {
+        "zh-TW": "課程範例要寫對應哪一堂課、哪一週，學生才知道要配哪一段內容看。",
+        "en": "A course example should say which lesson or week it belongs to, so students know what to watch or read with it."
+      },
+      "fix": {
+        "zh-TW": "加一個「對應單元」章節，寫課程名稱與第幾週或第幾單元。",
+        "en": "Add a Course Unit section with the course name and the week or lesson."
+      },
+      "messages": {
+        "missing": {
+          "zh-TW": "沒寫對應哪一個課程單元",
+          "en": "Does not say which lesson it belongs to"
+        }
+      },
+      "example": {
+        "zh-TW": {
+          "before": [],
+          "after": [
+            "## 對應單元",
+            "",
+            "前端入門課第 3 週：用 Vue 做購物車。"
+          ]
+        },
+        "en": {
+          "before": [],
+          "after": [
+            "## Course Unit",
+            "",
+            "Week 3 of the intro front-end course: building a cart with Vue."
+          ]
+        }
+      }
+    },
+    {
+      "id": "TYPE-CS003",
+      "block": "install",
+      "category": "type-specific",
+      "severity": "warning",
+      "types": [
+        "course-example"
+      ],
+      "needsProject": true,
+      "status": "planned",
+      "title": {
+        "zh-TW": "有起始版和完成版就說明怎麼切換",
+        "en": "Explain how to switch between starter and solution"
+      },
+      "description": {
+        "zh-TW": "專案有 `start`、`finish` 這類分支或資料夾時，README 要說明哪個是起點、哪個是完成版、怎麼切換。",
+        "en": "If the project has starter and solution branches or folders, the README should say which is which and how to switch."
+      },
+      "fix": {
+        "zh-TW": "加一個「起始版與完成版」章節。",
+        "en": "Add a Starter and Solution section."
+      },
+      "messages": {}
+    }
+  ]
+}

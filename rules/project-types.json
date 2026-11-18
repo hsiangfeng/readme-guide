@@ -1,0 +1,37 @@
+{
+  "default": "web-app",
+  "types": [
+    {
+      "id": "web-app",
+      "name": { "zh-TW": "網頁專案", "en": "Web app" },
+      "description": { "zh-TW": "打開瀏覽器就能用的網站或網頁應用程式。", "en": "A website or web application people use in the browser." },
+      "required": ["features", "tech", "getting-started", "requirements", "install-steps", "author"],
+      "optional": ["demo", "screenshots", "testing", "usage", "env", "structure", "contributing", "acknowledgments", "license"],
+      "typeSpecific": []
+    },
+    {
+      "id": "course-example",
+      "name": { "zh-TW": "課程範例", "en": "Course example" },
+      "description": { "zh-TW": "上課或教學文章用的範例程式，學生會下載來照著做。", "en": "Example code for a class or tutorial that students download and follow." },
+      "required": ["learning-objectives", "tech", "getting-started", "requirements", "install-steps", "usage", "structure", "author"],
+      "optional": ["demo", "screenshots", "course-unit", "features", "testing", "start-finish", "env", "contributing", "acknowledgments", "license"],
+      "typeSpecific": ["learning-objectives", "course-unit", "start-finish", "usage"]
+    },
+    {
+      "id": "portfolio",
+      "name": { "zh-TW": "作品集", "en": "Portfolio" },
+      "description": { "zh-TW": "求職或展示用的作品，讀者多半是面試官。", "en": "A project shown to employers or clients; the reader is often an interviewer." },
+      "required": ["screenshots", "features", "tech", "getting-started", "requirements", "install-steps", "author"],
+      "optional": ["demo", "my-role", "design-decisions", "testing", "usage", "env", "structure", "contributing", "acknowledgments", "license"],
+      "typeSpecific": ["my-role", "design-decisions"]
+    },
+    {
+      "id": "backend-api",
+      "name": { "zh-TW": "後端 API", "en": "Backend API" },
+      "description": { "zh-TW": "提供資料給其他程式呼叫的伺服器，通常沒有自己的畫面。", "en": "A server that other programs call for data, usually without its own screens." },
+      "required": ["api-docs", "features", "tech", "getting-started", "requirements", "install-steps", "usage", "env", "structure", "author"],
+      "optional": ["demo", "testing", "database", "contributing", "acknowledgments", "license"],
+      "typeSpecific": ["api-docs", "database", "usage"]
+    }
+  ]
+}

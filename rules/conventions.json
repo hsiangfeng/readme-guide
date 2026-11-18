@@ -1,0 +1,39 @@
+{
+  "placeholder": {
+    "pattern": "\\{\\{\\s*(?:請填|FILL)[^}]*\\}\\}",
+    "flags": "gi",
+    "examples": {
+      "zh-TW": "{{請填：專案名稱}}",
+      "en": "{{FILL: project name}}"
+    },
+    "note": {
+      "zh-TW": "範本裡每個要填的地方都用雙大括號包起來，開頭寫「請填：」（英文範本寫「FILL:」）。成品裡留下任何一個，檢查工具都會報錯（STR015）。在網址或指令裡的待填處不要有空白，例如 {{請填：帳號}}、{{FILL:owner}}。",
+      "en": "Every blank in a template is wrapped in double curly braces and starts with \"FILL:\" (\"請填：\" in Traditional Chinese templates). Any one left in a finished README is an error (STR015). Inside a link or a command, keep it free of spaces, for example {{FILL:owner}}."
+    },
+    "syntaxMention": {
+      "pattern": "^\\{\\{\\s*(?:請填|FILL)\\s*[:：]?\\s*(?:…|\\.{3})\\s*\\}\\}$",
+      "flags": "i",
+      "note": {
+        "zh-TW": "說明只有刪節號的 {{請填：…}}、{{FILL: ...}}，是在介紹這個寫法本身，不是還沒填的地方，檢查工具不報。範本裡真正的待填處一定要寫說明文字。",
+        "en": "A blank whose description is only an ellipsis, such as {{FILL: …}} or {{請填：...}}, is talking about the syntax itself, not a missing value, so the checker does not report it. Real blanks in templates always carry a description."
+      }
+    }
+  },
+  "oneLiner": {
+    "maxLength": { "zh-TW": 60, "en": 120 },
+    "note": {
+      "zh-TW": "中文以字計（一個英文單字算一個字），英文以字元計。",
+      "en": "Chinese is counted in characters (an English word counts as one), English in characters."
+    }
+  },
+  "status": {
+    "prefixes": {
+      "zh-TW": ["狀態", "專案狀態"],
+      "en": ["Status", "Project status"]
+    },
+    "values": {
+      "zh-TW": ["開發中", "已完成", "維護中", "練習用", "不再維護", "已停止維護", "已封存"],
+      "en": ["In development", "Completed", "Maintained", "Practice project", "No longer maintained", "Actively maintained", "Work in progress", "Archived", "Deprecated", "Unmaintained"]
+    }
+  }
+}

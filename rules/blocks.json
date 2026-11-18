@@ -1,0 +1,123 @@
+{
+  "groups": [
+    {
+      "id": "what",
+      "question": {
+        "zh-TW": "這是什麼？",
+        "en": "What is it?"
+      }
+    },
+    {
+      "id": "run",
+      "question": {
+        "zh-TW": "怎麼跑起來？",
+        "en": "How do I run it?"
+      }
+    },
+    {
+      "id": "change",
+      "question": {
+        "zh-TW": "怎麼改、能不能用？",
+        "en": "How do I change it, and may I use it?"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "slug": "title",
+      "group": "what",
+      "name": {
+        "zh-TW": "標題與一句話說明",
+        "en": "Title and one-line description"
+      },
+      "summary": {
+        "zh-TW": "第一行是全文唯一的一級標題；下一行用一句純文字說明做什麼、給誰用；再一行寫專案狀態。",
+        "en": "The first line is the only top-level heading; the next line says in one plain sentence what it does and who it is for; then one line with the project status."
+      }
+    },
+    {
+      "slug": "demo",
+      "group": "what",
+      "name": {
+        "zh-TW": "線上展示與畫面",
+        "en": "Demo and screenshots"
+      },
+      "summary": {
+        "zh-TW": "線上網址與截圖。圖片要有替代文字，重點不能只放在圖裡。",
+        "en": "Live link and screenshots. Every image needs alt text, and nothing important should live only inside an image."
+      }
+    },
+    {
+      "slug": "features",
+      "group": "what",
+      "name": {
+        "zh-TW": "功能",
+        "en": "Features"
+      },
+      "summary": {
+        "zh-TW": "做得到的事；還沒做的可以標出來。",
+        "en": "What it can do; things not built yet can be marked as such."
+      }
+    },
+    {
+      "slug": "tech",
+      "group": "what",
+      "name": {
+        "zh-TW": "使用技術",
+        "en": "Tech stack"
+      },
+      "summary": {
+        "zh-TW": "只寫主要框架與主版號。",
+        "en": "Only the main frameworks and their major versions."
+      }
+    },
+    {
+      "slug": "install",
+      "group": "run",
+      "name": {
+        "zh-TW": "安裝與執行",
+        "en": "Getting started"
+      },
+      "summary": {
+        "zh-TW": "環境需求（寫版本）、安裝步驟、執行測試（選填）；指令放程式碼區塊。",
+        "en": "Requirements (with versions), installation steps, running tests (optional); commands go in code blocks."
+      }
+    },
+    {
+      "slug": "env",
+      "group": "run",
+      "name": {
+        "zh-TW": "環境變數",
+        "en": "Environment variables"
+      },
+      "summary": {
+        "zh-TW": "每個變數的用途、是否必填、去哪裡拿；不放真的金鑰。",
+        "en": "What each variable is for, whether it is required and where to get it; never a real key."
+      }
+    },
+    {
+      "slug": "structure",
+      "group": "change",
+      "name": {
+        "zh-TW": "資料夾結構",
+        "en": "Project structure"
+      },
+      "summary": {
+        "zh-TW": "只列重要的一兩層。",
+        "en": "Only the one or two levels that matter."
+      }
+    },
+    {
+      "slug": "license",
+      "group": "change",
+      "name": {
+        "zh-TW": "作者、聯絡與授權",
+        "en": "Author, contact and license"
+      },
+      "summary": {
+        "zh-TW": "「作者與聯絡」與「授權」是兩個標題，「授權」固定放最後；「貢獻方式」選填，放在這兩個之前。公開的專案要寫授權，公司內部或不公開的專案可以不寫；「作者與聯絡」一定要有，內部專案就寫負責的團隊和有問題要去哪裡問。",
+        "en": "\"Author\" and \"License\" are two separate headings, and \"License\" always comes last; \"Contributing\" is optional and goes before both. Public projects state a license; internal or private projects may leave it out. \"Author\" is always required: for an internal project, name the team that owns it and where to ask questions."
+      }
+    }
+  ]
+}
