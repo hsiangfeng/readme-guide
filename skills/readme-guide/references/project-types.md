@@ -1,6 +1,6 @@
 # The four project types
 
-The skeleton and the headings are the same for all four. License is never required by type: it is required when the project has a `LICENSE` file or a license in `package.json` (`LIC001`), and internal projects may leave it out. What changes is which sections are required and which extra sections a type adds. The authoritative lists are in `rules/project-types.json`; this file explains them.
+The skeleton and the headings are the same for all four. License is never required by type: it is required when the project has a `LICENSE` file or a license in `package.json` (`LIC001`), and internal projects may leave it out. What changes is which sections are required and which extra sections a type adds. The authoritative lists are in `project-types.json` (`https://readme-guide.com/rules/project-types.json`); this file explains them.
 
 ## How to tell them apart
 
@@ -45,7 +45,7 @@ The checker guesses the type too (from section headings and dependencies) and pr
 
 ## Section order for type-specific sections
 
-Every section belongs to a block (`rules/headings.json`), and blocks keep their order. In practice:
+Every section belongs to a block (`headings.json`), and blocks keep their order. In practice:
 
 - API Documentation sits with Demo and Screenshots.
 - Learning Objectives, Course Unit and My Role sit with Features.

@@ -1,6 +1,6 @@
 # The eight blocks
 
-Each block below is keyed by its slug from `rules/blocks.json`. **The order of the blocks and the official headings come from `rules/blocks.json` and `rules/headings.json`; if this file ever disagrees, the JSON wins.** Examples use a sample project, "Corner Breakfast" (Traditional Chinese name 巷口早餐店｜線上點餐, folder `breakfast-order`), a web page where customers order on their phone and pick up at the shop. Every rule in `rules/rules.json` also has a before-and-after `example` from the same project.
+Each block below is keyed by its slug from `blocks.json`. **The order of the blocks and the official headings come from `blocks.json` and `headings.json` (both at `https://readme-guide.com/rules/`); if this file ever disagrees, the JSON wins.** Examples use a sample project, "Corner Breakfast" (Traditional Chinese name 巷口早餐店｜線上點餐, folder `breakfast-order`), a web page where customers order on their phone and pick up at the shop. Every rule also has a before-and-after example from the same project; `npx --yes readme-guide@latest explain RULE_ID` shows it.
 
 The blocks answer three reader questions in turn: *What is it?* → *How do I run it?* → *How do I change it, and may I use it?*
 

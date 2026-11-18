@@ -1,12 +1,15 @@
 # The checker
 
-`GUIDE/lint/bin/readme-guide.mjs` checks a README against `rules/`. It needs Node.js 22 or later and has no dependencies, so there is nothing to install.
+The checker is the `readme-guide` package on npm. It checks a README against the README Guide rules. It needs Node.js 22 or later and has no dependencies; `npx` downloads it into the npm cache, so nothing is added to the user's project.
 
 ## Command
 
 ```bash
-node GUIDE/lint/bin/readme-guide.mjs check PROJECT/README.md --type TYPE --lang LANG --json
+npx --yes readme-guide@latest check PROJECT/README.md --type TYPE --lang LANG --json
 ```
+
+- `--yes` skips npx's "Ok to proceed?" question, so the command never waits for input.
+- `@latest` makes npx check for the newest version instead of reusing an older one it may have cached.
 
 | Option | Meaning |
 | --- | --- |
@@ -15,7 +18,7 @@ node GUIDE/lint/bin/readme-guide.mjs check PROJECT/README.md --type TYPE --lang 
 | `--project` | The project folder to compare with. Defaults to the folder the README is in. |
 | `--json` | Machine-readable output. Use it while fixing. |
 
-Exit code: `1` when there is at least one error, `0` when there are only warnings or nothing, `2` when the options or the file path are wrong.
+Exit code: `1` when there is at least one error, `0` when there are only warnings or nothing, `2` when the options or the file path are wrong (or, for `explain`, the rule ID is unknown).
 
 ## JSON output
 
@@ -47,7 +50,25 @@ Exit code: `1` when there is at least one error, `0` when there are only warning
 - `line` and `column` are `null` for problems about something missing (a section, a variable).
 - `block` is `null` when the problem sits in a section that is not one of the eight blocks.
 - `skippedRules` lists rules that compare against project files. They are skipped when the folder contains nothing but Markdown files. If you see it non-empty while working on a real project, you passed the wrong `--project`.
-- The full explanation of any rule is in `rules/rules.json` under the same `ruleId`.
+- For the full explanation of a rule, use `explain` with its `ruleId` (next section).
+
+## Looking up one rule
+
+```bash
+npx --yes readme-guide@latest explain CMD004 --lang LANG
+```
+
+It prints the rule's block, severity, status (implemented or planned), description, how to fix it, and a before-and-after example. Add `--json` for the same fields as JSON. IDs are not case-sensitive. An unknown ID exits with `2` and lists similar IDs.
+
+Use this instead of fetching the full rule list (`rules.json`, about 118 KB).
+
+## When the checker cannot run
+
+Typical causes: Node.js older than 22 (`node --version`), no `npx`, no network, or a registry the machine cannot reach. Do not pretend it ran and do not write a result you did not see. Instead:
+
+1. Review the README yourself against the writing rules in the guide.
+2. Tell the user plainly that the checker did not run and why (quote the error).
+3. Give them the command to run it themselves in the project folder: `npx readme-guide@latest check README.md`.
 
 ## Fix loop
 

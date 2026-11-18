@@ -4,7 +4,7 @@ Read everything below that exists before asking the user anything. Keep a list o
 
 ## What to read and where it goes
 
-Block slugs refer to `rules/blocks.json`.
+Block slugs refer to `blocks.json` (`https://readme-guide.com/rules/blocks.json`).
 
 | Source | Look for | Feeds block |
 | --- | --- | --- |

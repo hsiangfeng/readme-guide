@@ -9,21 +9,25 @@ Write a README that people scan quickly and that AI reads accurately: one fixed 
 
 ## Where things are
 
-This skill is part of the README Guide repository. `GUIDE` below means the repository root — the folder two levels above this file (it contains `skills/`, `rules/`, `lint/`, `templates/`). The user's project is a different folder; never write into `GUIDE`.
+Everything you need is next to this file or on readme-guide.com. You never need the README Guide repository itself.
 
-`GUIDE` is often cloned inside the user's project folder (that is what the prompt on the website does). There it is a temporary tool, not part of the project: leave it out of the README's Project Structure, never commit it, and never read it as if it were project code.
+- **References** (`discovery.md`, `project-types.md`, `blocks.md`, `checker.md`): in `references/` next to this file. If you read this guide from the web and it is not on disk, fetch a reference when a step points to it: `https://readme-guide.com/skill/references/<name>.md`.
+- **Templates:** `https://readme-guide.com/templates/<lang>/<type>.md`, where `<lang>` is `zh-TW` or `en`, for example `https://readme-guide.com/templates/en/backend-api.md`. Fetch only the one you will use.
+- **Rule data:** small JSON files at `https://readme-guide.com/rules/<file>`. The templates already follow them; fetch one only when a step needs it.
 
-| Path (under `GUIDE`) | What it holds |
+| File | What it holds |
 | --- | --- |
-| `rules/blocks.json` | The eight blocks and **their order** (array order). Read it; do not rely on memory. |
-| `rules/headings.json` | Official heading for every section in Traditional Chinese and English, accepted alternatives, and which block each belongs to. |
-| `rules/project-types.json` | For each type: required sections, optional sections, type-specific sections. |
-| `rules/rules.json` | Every rule ID (`STR006`, `CMD004`…), its block, severity, explanation and fix. |
-| `rules/conventions.json` | Template blank syntax (`{{FILL: …}}` / `{{請填：…}}`), one-line description length, status wording. |
-| `templates/<zh-TW or en>/<type>.md` | Template per language and type, e.g. `templates/en/backend-api.md`. |
-| `lint/bin/readme-guide.mjs` | The checker. Needs Node.js 22 or later and nothing else (no install step). |
+| `blocks.json` | The eight blocks and **their order** (array order). |
+| `headings.json` | Official heading for every section in Traditional Chinese and English, accepted alternatives, and which block each belongs to. |
+| `project-types.json` | For each type: required sections, optional sections, type-specific sections. |
+| `conventions.json` | Template blank syntax (`{{FILL: …}}` / `{{請填：…}}`), one-line description length, status wording. |
 
-Always use the IDs and block names from `rules/` when you talk about a rule. Do not invent your own names for them.
+- **One rule in full** (block, severity, explanation, fix, example): `npx --yes readme-guide@latest explain RULE_ID --lang LANG`. The complete rule list, `rules.json`, is large (about 118 KB); do not fetch it.
+- **The checker:** the `readme-guide` package on npm, run with `npx` (step 5). It needs Node.js 22 or later.
+
+**How to fetch:** get the raw file, for example `curl -fsSL https://readme-guide.com/templates/en/web-app.md`, and read all of it. Do not use a web tool that returns a summary: the exact headings, IDs and order matter. Do not clone the README Guide repository, and leave no file from this guide in the user's project folder. If you must save a fetched file, put it in a temporary folder outside the project and delete it when you are done.
+
+Always use the rule IDs and block names from these files and from the checker when you talk about a rule. Do not invent your own names for them.
 
 ## Non-negotiable rules
 
@@ -58,7 +62,7 @@ Also decide whether the project is **public** (meant for others to read or reuse
 
 ### 2. Decide the project type
 
-One of `web-app`, `course-example`, `portfolio`, `backend-api` (definitions in `rules/project-types.json`, differences in `references/project-types.md`). Use the signals in that reference. **If you are not sure, ask the user**, offering the four types in plain words. Do not guess between portfolio and web app: only the user knows whether the project is meant to show an employer.
+One of `web-app`, `course-example`, `portfolio`, `backend-api` (definitions in `project-types.json`, differences in `references/project-types.md`). Use the signals in that reference. **If you are not sure, ask the user**, offering the four types in plain words. Do not guess between portfolio and web app: only the user knows whether the project is meant to show an employer.
 
 ### 3. List what you could not find, then ask
 
@@ -79,8 +83,8 @@ Ask in **one message**, numbered, each with one line on why it matters, and say 
 
 ### 4. Write from the template
 
-- **Language:** write in the user's language. Templates exist for Traditional Chinese (`zh-TW`) and English (`en`). For any other language, use the English template, keep the official English headings from `rules/headings.json` (the checker recognizes only those two languages), write the content in the user's language, and tell the user why the headings are in English.
-- Open `templates/<lang>/<type>.md`. If it does not exist yet, build the skeleton yourself: blocks in the order of `rules/blocks.json`, official headings from `rules/headings.json`, the required and type-specific sections from `rules/project-types.json`.
+- **Language:** write in the user's language. Templates exist for Traditional Chinese (`zh-TW`) and English (`en`). For any other language, use the English template, keep its official English headings (the checker recognizes only those two languages), write the content in the user's language, and tell the user why the headings are in English.
+- Fetch the template for the language and type, `https://readme-guide.com/templates/<lang>/<type>.md`, and write the README from it.
 - Keep the official headings and their order. Replace every blank with verified content; delete optional sections that do not apply.
 - Follow the per-block guidance in `references/blocks.md`: what each block is for, what to write, and good and bad examples.
 
@@ -89,15 +93,17 @@ Ask in **one message**, numbered, each with one line on why it matters, and say 
 Run from anywhere (use absolute paths if unsure):
 
 ```bash
-node GUIDE/lint/bin/readme-guide.mjs check PROJECT/README.md --type TYPE --lang LANG --json
+npx --yes readme-guide@latest check PROJECT/README.md --type TYPE --lang LANG --json
 ```
 
-`PROJECT` is the user's project folder (the checker compares the README with the files there). `LANG` is `zh-TW` or `en` and only changes the language of the messages. Details of the JSON and the loop: `references/checker.md`.
+`PROJECT` is the user's project folder (the checker compares the README with the files there). `LANG` is `zh-TW` or `en` and only changes the language of the messages. `npx` keeps the package in the npm cache; it adds nothing to the project. Details of the JSON and the loop: `references/checker.md`.
 
 1. Fix every **error**, then run again. Repeat until `summary.errors` is `0`. Never "fix" an error by deleting true information or by renaming a heading to dodge a rule.
 2. Go through every **warning**. Fix it if the warning is right. If you judge it does not apply (for example a long description the user insists on), keep it and note the reason for the user.
 3. If `skippedRules` is not empty, the checker found no project files and skipped the comparisons; tell the user those checks did not run.
 4. Finish with one run without `--json` and include its last line in your report.
+
+If the checker cannot run (no Node.js 22 or later, no `npx`, no network, the registry is blocked), do not pretend it ran and do not invent its output. Review the README yourself against "Writing rules at a glance" below, then tell the user that the checker did not run, why, and how to run it themselves: `npx readme-guide@latest check README.md` in the project folder.
 
 ### 6. Report to the user
 
@@ -107,13 +113,11 @@ Give the user three short lists, then the checker result:
 2. **From your answers** — what the user told you.
 3. **Still to do** — things left out for lack of information that the user may want to add later (for example screenshots), with where they would go.
 
-Then: the final checker summary line, and each remaining warning with your reason for keeping it.
-
-If `GUIDE` sits inside the project folder, end by telling the user it is no longer needed and ask whether to delete it. Do not delete it without a yes.
+Then: the final checker summary line, and each remaining warning with your reason for keeping it. If the checker did not run, say so here instead.
 
 ## Writing rules at a glance
 
-Each line names the rule ID it follows. Full text in `rules/rules.json`.
+Each line names the rule ID it follows. For the full text of a rule, run `npx --yes readme-guide@latest explain RULE_ID`.
 
 - Line 1 is `# Project name`, the only top-level heading (`STR002`); the next line is one plain sentence on what it does and for whom (`STR003`, `STR014`); then a status line (`STR004`).
 - Every section the type requires is present under its official heading (`STR006`), in block order (`STR007`), with the license last (`STR008`). No empty sections (`STR009`); no skipped heading levels (`STR005`).
@@ -125,7 +129,7 @@ Each line names the rule ID it follows. Full text in `rules/rules.json`.
 - Relative links resolve (`LNK001`); link text says where it goes, never "click here" (`LNK004`).
 - Public projects with a `LICENSE` file or a license in `package.json` have a License section (`LIC001`) that agrees with both (`LIC002`); a named open license comes with a `LICENSE` file (`LIC003`). Internal projects may leave the License section out.
 - Type-specific: API documentation location (`TYPE-API001`), database setup (`TYPE-API002`), a request example (`TYPE-API003`); portfolio "My Role" and "Design Decisions" (`TYPE-PF001`, `TYPE-PF002`); course unit (`TYPE-CS002`).
-- Planned rules in `rules/rules.json` are not checked yet, but follow them anyway.
+- Rules whose status is planned (`explain` shows the status) are not checked yet, but follow them anyway.
 
 ## References
 
