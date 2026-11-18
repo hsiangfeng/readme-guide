@@ -1,0 +1,4 @@
+# 每個資料夾是一個套件：site/ 是網站，lint/ 是檢查工具（P1 建立，資料夾還沒有時 pnpm 會略過）
+packages:
+  - site
+  - lint

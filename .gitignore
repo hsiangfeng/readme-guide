@@ -1,0 +1,22 @@
+# 套件與建置產出
+node_modules
+.nuxt
+.output
+dist
+.data
+*.log
+
+# 本機設定與系統檔
+.env
+.DS_Store
+
+# 內部研究筆記、規劃文件與設計稿（不進版控）
+.research/
+PLAN.md
+design/
+
+# 網站驗證用的截圖
+site/.screenshots/
+
+# Cloudflare 的本機暫存（wrangler 產生）
+.wrangler/

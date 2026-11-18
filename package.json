@@ -1,0 +1,28 @@
+{
+  "name": "readme-guide-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter site dev",
+    "generate": "pnpm --filter site generate",
+    "lint": "pnpm --filter site lint",
+    "typecheck": "pnpm --filter site typecheck",
+    "test": "pnpm --filter site test",
+    "test:output": "pnpm --filter site test:output",
+    "test:checker": "pnpm --filter readme-guide test",
+    "check:readme": "node lint/bin/readme-guide.mjs check README.md && node lint/bin/readme-guide.mjs check README.zh-TW.md",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:checker && pnpm check:readme && pnpm generate && pnpm test:output"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "@parcel/watcher"
+    ]
+  }
+}
