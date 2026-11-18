@@ -1,25 +1,29 @@
 /**
- * 網站分析與搜尋引擎的網站驗證碼。四個值都從各家後台拿，填在下面；
- * 留空字串就完全不輸出對應的標籤與指令碼。
+ * 網站分析與搜尋引擎的網站驗證碼。
+ *
+ * 值不寫在原始碼裡，由建置環境的環境變數提供（正式站設定在部署平台的建置變數）；
+ * 沒設定的那一項就完全不輸出對應的標籤與指令碼。所以本機建置、PR 檢查，
+ * 以及別人複製這個專案之後的建置，預設都不會帶分析，也不會帶到別人的驗證碼。
  *
  * 輸出的位置：產生靜態頁時（nuxt.config.ts 的 prerender:generate）塞進每一頁 HTML 的 `<head>` 開頭，
- * 所以只有正式建置會有，開發模式（nuxt dev）不會載入分析。
+ * 所以開發模式（nuxt dev）不會載入分析。
  */
 
 /**
- * Google 代碼的 ID：GA 後台「管理 → 資料串流 → 網頁 → 查看代碼操作說明 → 手動安裝」那段程式碼裡 `id=` 後面那一串，
- * 照抄就好（`GTM-` 或 `G-` 開頭）。這個串流在報表與後台顯示的評估 ID 是 G-XXXXXXXXXX，兩個指的是同一個串流。
+ * 四個環境變數的名稱：
+ * - `SITE_GA_ID`：Google 代碼的 ID。GA 後台「管理 → 資料串流 → 網頁 → 查看代碼操作說明 → 手動安裝」
+ *   那段程式碼裡 `id=` 後面那一串，照抄就好（`GTM-` 或 `G-` 開頭）。
+ * - `SITE_GOOGLE_VERIFICATION`：Google Search Console「HTML 標記」驗證方式裡
+ *   `<meta name="google-site-verification">` 的 content。
+ * - `SITE_BING_VERIFICATION`：Bing Webmaster Tools 的 `<meta name="msvalidate.01">` 的 content。
+ * - `SITE_NAVER_VERIFICATION`：Naver Search Advisor 的 `<meta name="naver-site-verification">` 的 content。
  */
-export const GOOGLE_TAG_ID = ''
-
-/** Google Search Console 的驗證碼（「HTML 標記」驗證方式裡 `<meta name="google-site-verification">` 的 content） */
-export const GOOGLE_SITE_VERIFICATION = ''
-
-/** Bing Webmaster Tools 的驗證碼（`<meta name="msvalidate.01">` 的 content） */
-export const BING_SITE_VERIFICATION = ''
-
-/** Naver Search Advisor 的驗證碼（`<meta name="naver-site-verification">` 的 content） */
-export const NAVER_SITE_VERIFICATION = ''
+export const SITE_TAG_ENV = {
+  ga: 'SITE_GA_ID',
+  google: 'SITE_GOOGLE_VERIFICATION',
+  bing: 'SITE_BING_VERIFICATION',
+  naver: 'SITE_NAVER_VERIFICATION',
+} as const
 
 /** Google Analytics 載入指令碼的網域（輸出檢查裡唯一允許的外部網域） */
 export const GA_ORIGIN = 'https://www.googletagmanager.com'
@@ -32,16 +36,17 @@ export interface SiteTagIds {
 }
 
 /**
- * 建置時用的四個值：上面的常數；建置環境有對應的環境變數時以環境變數為準
- * （給測試用：不用改原始碼就能帶測試值建置一次，確認每一頁都有）。
+ * 建置時用的四個值：讀建置環境的環境變數，沒設定的就是空字串（不輸出）。
+ * 前後的空白會去掉（從後台複製貼上時常多帶一個空白）。
  * @param env 環境變數
  */
 export function siteTagIds(env: Record<string, string | undefined> = process.env): SiteTagIds {
+  const read = (name: string) => (env[name] ?? '').trim()
   return {
-    ga: env.SITE_GA_ID ?? GOOGLE_TAG_ID,
-    google: env.SITE_GOOGLE_VERIFICATION ?? GOOGLE_SITE_VERIFICATION,
-    bing: env.SITE_BING_VERIFICATION ?? BING_SITE_VERIFICATION,
-    naver: env.SITE_NAVER_VERIFICATION ?? NAVER_SITE_VERIFICATION,
+    ga: read(SITE_TAG_ENV.ga),
+    google: read(SITE_TAG_ENV.google),
+    bing: read(SITE_TAG_ENV.bing),
+    naver: read(SITE_TAG_ENV.naver),
   }
 }
 

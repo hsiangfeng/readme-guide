@@ -143,7 +143,7 @@ export default defineNuxtConfig({
         if (['/404.html', '/200.html'].includes(route.route)) {
           route.contents = route.contents.replace('<head>', '<head><meta name="robots" content="noindex">')
         }
-        // 分析與網站驗證碼（值在 shared/utils/siteTags.ts；空的就不加）。只在產生靜態頁時加，開發模式不載入分析
+        // 分析與網站驗證碼（值來自建置環境的環境變數，見 shared/utils/siteTags.ts；沒設定就不加）。只在產生靜態頁時加，開發模式不載入分析
         route.contents = injectSiteTags(route.contents, siteTags)
       },
     },

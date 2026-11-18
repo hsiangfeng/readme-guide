@@ -5,8 +5,8 @@ import { GA_ORIGIN, injectSiteTags, siteTagIds, type SiteTagIds } from '../share
 
 /*
  * 產生出來的每一頁：分析與網站驗證碼。要先跑 pnpm generate。
- * 期待的值跟建置時一樣讀 siteTagIds()（原始碼的常數；建置時有 SITE_GA_ID 等環境變數就用環境變數），
- * 所以帶測試值建置時，跑這個檢查也要帶同樣的環境變數。
+ * 期待的值跟建置時一樣讀 siteTagIds()（建置環境的 SITE_GA_ID 等環境變數；沒設定就是不輸出），
+ * 所以帶著環境變數建置時，跑這個檢查也要帶同樣的環境變數。
  */
 
 const output = join(__dirname, '../.output/public')
