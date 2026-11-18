@@ -41,10 +41,10 @@ pnpm dev
 | 想改的東西 | 改這裡 | 注意 |
 | ---- | ---- | ---- |
 | 規則：八塊順序、正式標題、必填章節、每條檢查規則的說明 | `rules/` | 這裡是唯一的規則來源，檢查工具、給 AI 的規則與網站都從這裡讀取，其他地方不要把順序、標題或必填章節寫死。欄位說明見 `rules/README.md` |
-| 檢查工具怎麼判斷 | `lint/src/checks/` | 每條檢查規則都要有「會過」和「不會過」的測試；檢查工具不加任何相依套件 |
+| 檢查工具怎麼判斷 | `lint/src/checks/` | 每條檢查規則都要有「會過」和「不會過」的測試；檢查工具不加任何相依套件。檢查工具會發佈成 npm 套件 `readme-guide`，打包時才把 `rules/` 複製進套件，不要把複本 commit 到 `lint/` 底下 |
 | 範本 | `templates/zh-TW/`、`templates/en/` | 繁體中文與英文一起改，維持逐行對應；加上對應的 `--type` 跑檢查工具時，只能剩「還有沒填的地方」（`STR015`）這一種問題 |
 | 每一塊的教學內容 | `site/content/guide/` | 撰寫格式見 `site/content/guide/README.md` |
-| 給 AI 的規則 | `skills/readme-guide/` | `SKILL.md` 保持精簡，細節放在 `references/` |
+| 給 AI 的規則 | `skills/readme-guide/` | `SKILL.md` 保持精簡，細節放在 `references/`。網站會原封不動提供這些檔案，所以不能依賴這個儲存庫的其他檔案：要指向 readme-guide.com 的網址與 npm 上的檢查工具，不要寫儲存庫裡的路徑 |
 | 網站 | `site/` | 順序、標題與規則數量都從 `rules/` 讀取計算，不要寫死 |
 
 ## 送出之前

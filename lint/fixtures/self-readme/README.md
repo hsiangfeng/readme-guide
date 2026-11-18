@@ -19,7 +19,7 @@ Status: maintained
 - [x] Eight-block structure: why each block exists, what to write, common mistakes, and fixed examples
 - [x] Templates for four project types (web app, course example, portfolio, backend API) in English and Traditional Chinese
 - [x] Copy-paste prompt for AI: reads the rules and project files first, asks about anything it cannot find, and runs the checker after writing
-- [x] Zero-dependency checker: compares the README against project config files to catch mismatched commands, versions, environment variables, and licenses
+- [x] Zero-dependency checker: compares the README against project config files to catch mismatched commands, versions, environment variables, and licenses; runs with one `npx` command and adds nothing to your project
 - [x] Machine-readable checker output for AI tools
 
 ## Tech Stack
@@ -69,14 +69,13 @@ pnpm --filter readme-guide test
 Paste the following prompt into an AI tool that can read files and run commands:
 
 ```text
-First, run this command:
-git clone https://github.com/hsiangfeng/readme-guide.git
+First, run this command and read the whole guide it prints:
+curl -fsSL https://readme-guide.com/skill.md
 
-Read skills/readme-guide/SKILL.md inside it,
-check my current project against it,
+Then inspect my current project against the guide,
 and write a README.md for me.
 
-If you're not sure about something, ask me first. Don't make it up.
+If anything is unclear, ask me first. Don't make it up.
 ```
 
 ### Write from a Template
@@ -85,14 +84,13 @@ Templates live in `templates/en/` and `templates/zh-TW/`, with one file for each
 
 ### Run the Checker
 
-In your project folder, run:
+In your project folder, run (requires Node.js 22 or later):
 
 ```bash
-git clone https://github.com/hsiangfeng/readme-guide.git
-node readme-guide/lint/bin/readme-guide.mjs check README.md
+npx readme-guide@latest check README.md
 ```
 
-The exit code is `1` when there are errors, and `0` when there are only warnings or no issues. Add `--type` to specify the project type (`web-app`, `course-example`, `portfolio`, `backend-api`), and `--json` for output formatted for AI to read. Delete the `readme-guide/` folder when you are done; do not commit it with your project.
+The exit code is `1` when there are errors, and `0` when there are only warnings or no issues. Add `--type` to specify the project type (`web-app`, `course-example`, `portfolio`, `backend-api`), and `--json` for output formatted for AI to read. To read the full explanation of one rule, such as `CMD004`, run `npx readme-guide@latest explain CMD004`.
 
 ## Project Structure
 
@@ -100,7 +98,7 @@ The exit code is `1` when there are errors, and `0` when there are only warnings
 rules/      Single source of truth: block order, headings, required sections, check rules
 templates/  README templates for the four project types
 skills/     Writing rules for AI
-lint/       README checker
+lint/       README checker (published to npm as readme-guide)
 site/       Website for readme-guide.com
 ```
 

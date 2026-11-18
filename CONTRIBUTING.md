@@ -41,10 +41,10 @@ Open http://localhost:3000 in your browser; once you see the home page, it is ru
 | What you want to change | Change it here | Keep in mind |
 | ---- | ---- | ---- |
 | Rules: block order, official headings, required sections, and check rule text | `rules/` | This is the single source of truth. The checker, the rules for AI, and the website all read from here, so never hardcode block order, headings, or required sections elsewhere. See `rules/README.md` for field details |
-| Checker logic | `lint/src/checks/` | Every check rule needs both a passing and a failing test; do not add any dependencies |
+| Checker logic | `lint/src/checks/` | Every check rule needs both a passing and a failing test; do not add any dependencies. The checker is published to npm as `readme-guide`; packing copies `rules/` into the package, so never commit a copy under `lint/` |
 | Templates | `templates/zh-TW/`, `templates/en/` | Update both languages together, line for line; when checked with the matching `--type`, a template may only report blanks still to fill in (`STR015`) |
 | Guide content for each block | `site/content/guide/` | See `site/content/guide/README.md` for the file format |
-| Rules for AI | `skills/readme-guide/` | Keep `SKILL.md` concise; put detailed rules in `references/` |
+| Rules for AI | `skills/readme-guide/` | Keep `SKILL.md` concise; put detailed rules in `references/`. The website serves these files word for word, so they must work without the rest of this repository: point to readme-guide.com URLs and the npm checker, not to repository paths |
 | Website | `site/` | Block order, headings, and rule counts are computed from `rules/`, never hardcoded |
 
 ## Before you send it

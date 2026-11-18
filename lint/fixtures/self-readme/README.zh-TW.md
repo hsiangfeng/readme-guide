@@ -19,7 +19,7 @@
 - [x] 八塊結構：每一塊為什麼要有、要寫什麼、常見的錯與改好的樣子
 - [x] 四種專案的範本（網頁專案、課程範例、作品集、後端 API），繁體中文與英文各一份
 - [x] 一段貼給 AI 的指令：AI 會先讀規則、看專案檔案，查不到的事先問，寫完自己跑檢查
-- [x] 檢查工具：拿 README 對照專案裡的設定檔，抓出指令、版本、環境變數、授權對不起來的地方；不用安裝任何套件
+- [x] 檢查工具：拿 README 對照專案裡的設定檔，抓出指令、版本、環境變數、授權對不起來的地方；用 npx 一行就能跑，不會裝進專案
 - [x] 檢查結果可以輸出成給 AI 讀的格式
 
 ## 使用技術
@@ -69,10 +69,9 @@ pnpm --filter readme-guide test
 把下面這段貼給讀得了檔案、跑得了指令的 AI 工具：
 
 ```text
-請先執行這行指令：
-git clone https://github.com/hsiangfeng/readme-guide.git
+請先執行這行指令，把印出來的撰寫指南完整讀完：
+curl -fsSL https://readme-guide.com/skill.md
 
-讀完裡面的 skills/readme-guide/SKILL.md，
 照著它檢查我現在這個專案，
 幫我寫一份 README.md。
 
@@ -85,14 +84,13 @@ git clone https://github.com/hsiangfeng/readme-guide.git
 
 ### 跑檢查工具
 
-在自己的專案資料夾裡執行：
+在自己的專案資料夾裡執行（需要 Node.js 22 以上）：
 
 ```bash
-git clone https://github.com/hsiangfeng/readme-guide.git
-node readme-guide/lint/bin/readme-guide.mjs check README.md
+npx readme-guide@latest check README.md
 ```
 
-有錯誤時結束代碼是 `1`，只有警告或沒有問題是 `0`。加 `--type` 可以指定專案類型（`web-app`、`course-example`、`portfolio`、`backend-api`），加 `--json` 輸出給 AI 讀的格式。用完把 `readme-guide/` 資料夾刪掉，不要跟著專案一起 commit。
+有錯誤時結束代碼是 `1`，只有警告或沒有問題是 `0`。加 `--type` 可以指定專案類型（`web-app`、`course-example`、`portfolio`、`backend-api`），加 `--json` 輸出給 AI 讀的格式。想看某一條規則的完整說明，例如 `CMD004`，執行 `npx readme-guide@latest explain CMD004`。
 
 ## 資料夾結構
 
@@ -100,7 +98,7 @@ node readme-guide/lint/bin/readme-guide.mjs check README.md
 rules/      規則的單一來源：八塊順序、正式標題、必填章節、每一條檢查規則
 templates/  四種專案的 README 範本
 skills/     給 AI 的撰寫規則
-lint/       檢查工具
+lint/       檢查工具（發佈成 npm 套件 readme-guide）
 site/       readme-guide.com 的網站
 ```
 
