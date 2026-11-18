@@ -1,0 +1,26 @@
+{
+  "name": "breakfast-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "description": "提供菜單與訂單資料給點餐網頁使用的後端 API。",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "@prisma/client": "^6.5.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "prisma": "^6.5.0"
+  }
+}

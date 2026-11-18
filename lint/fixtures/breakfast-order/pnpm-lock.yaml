@@ -1,0 +1,10 @@
+# 測試用的假鎖定檔：檢查工具只看這個檔案在不在，不讀內容
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .: {}

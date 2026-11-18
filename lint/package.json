@@ -1,0 +1,17 @@
+{
+  "name": "readme-guide",
+  "version": "0.1.0",
+  "private": true,
+  "description": "照 README Guide 的規則檢查 README，不用安裝任何套件就能執行。",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "readme-guide": "./bin/readme-guide.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

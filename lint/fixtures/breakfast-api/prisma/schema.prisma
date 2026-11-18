@@ -1,0 +1,10 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuItem {
+  id    Int    @id @default(autoincrement())
+  name  String
+  price Int
+}
