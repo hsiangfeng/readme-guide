@@ -16,8 +16,8 @@ export default {
     copyPrompt: '複製給 AI 的指令',
     rulesLink: '看檢查工具會對哪些項目',
     prompt: {
-      read1: '用裡面的檢查工具檢查我這個專案的 README.md，',
-      read2: '照結果一條一條修，修到沒有錯誤為止。',
+      run: '請先執行這行指令：',
+      body1: '照結果一條一條修，修到沒有錯誤為止。',
     },
   },
 }

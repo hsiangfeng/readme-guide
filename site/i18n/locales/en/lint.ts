@@ -15,8 +15,8 @@ export default {
     copyPrompt: 'Copy prompt for AI',
     rulesLink: 'See all checker rules',
     prompt: {
-      read1: "Run its checker on my project's README.md,",
-      read2: 'and fix every issue one by one until no errors remain.',
+      run: 'First, run this command:',
+      body1: 'Fix every issue it reports, one by one, until no errors remain.',
     },
   },
 }

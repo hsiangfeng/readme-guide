@@ -32,7 +32,8 @@ const lineClass = {
     </div>
     <div class="px-4 pt-4 pb-[18px] font-mono text-[13.5px] leading-[26px] [overflow-wrap:anywhere]">
       <p v-for="(line, index) in lines" :key="index" class="m-0" :class="[lineClass[line.kind], line.gapBefore && 'mt-[26px]']">
-        <PromptMark v-if="line.kind === 'command'" class="text-ink-2" />{{ line.text }}
+        <template v-if="line.kind === 'command'"><PromptMark class="text-ink-2" /><CommandText :text="line.text" /></template>
+        <template v-else>{{ line.text }}</template>
       </p>
     </div>
   </div>

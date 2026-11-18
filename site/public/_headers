@@ -1,0 +1,24 @@
+# Cloudflare Workers 靜態資源的回應標頭（https://developers.cloudflare.com/workers/static-assets/headers/）。
+# 撰寫指南的原始檔照原文給 AI 讀：標明 UTF-8（繁中範本有中文），不給搜尋引擎收錄，免得跟正式頁面搶。
+# 範本只比對 /templates/en/ 與 /templates/zh-TW/，不能寫 /templates/*，不然會蓋到 /templates/web-app/ 這些頁面。
+# 跟開發模式的標頭（server/utils/guideFiles.ts）要一致，輸出檢查會比對。
+
+/skill.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+
+/skill/references/*
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+
+/templates/en/*
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+
+/templates/zh-TW/*
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+
+/rules/*.json
+  Content-Type: application/json; charset=utf-8
+  X-Robots-Tag: noindex

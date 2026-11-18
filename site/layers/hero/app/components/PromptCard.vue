@@ -40,7 +40,8 @@ function selectPrompt() {
         class="m-0 [overflow-wrap:anywhere]"
         :class="[line.accent && 'text-amber', line.gapBefore && 'mt-[27px]']"
       >
-        {{ line.text }}
+        <CommandText v-if="line.accent" :text="line.text" />
+        <template v-else>{{ line.text }}</template>
       </p>
     </div>
   </div>

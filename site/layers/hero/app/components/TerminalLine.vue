@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { localized } from '#shared/utils/locales'
 import { projectTypeInfo } from '#shared/utils/projectTypes'
-import type { TerminalLine } from '../types'
+import type { TerminalLine, TerminalValue } from '../types'
 
 /** 終端機示意的一行，依種類決定前面的符號和顏色 */
 defineProps<{ line: TerminalLine }>()
@@ -10,17 +10,19 @@ const { t, locale } = useI18n()
 
 /**
  * 反白部分的文字。
- * @param value 訊息 key 或專案類型
+ * @param value 訊息 key、專案類型或原文
  */
-function valueText(value: { key: string } | { projectType: string }): string {
-  return 'key' in value ? t(value.key) : localized(projectTypeInfo(value.projectType).name, locale.value)
+function valueText(value: TerminalValue): string {
+  if ('key' in value) return t(value.key)
+  if ('text' in value) return value.text
+  return localized(projectTypeInfo(value.projectType).name, locale.value)
 }
 </script>
 
 <template>
   <p class="m-0 [overflow-wrap:anywhere]" :class="line.gapBefore && 'mt-[26px] sm:mt-[31px]'">
     <template v-if="line.kind === 'command'">
-      <PromptMark class="text-ink-2" />{{ line.text }}
+      <PromptMark class="text-ink-2" /><CommandText :text="line.text" />
     </template>
     <span v-else-if="line.kind === 'ok'" class="text-ok"><span aria-hidden="true">✓ </span>{{ t(line.key) }}</span>
     <span v-else-if="line.kind === 'step'" class="text-ink-2">

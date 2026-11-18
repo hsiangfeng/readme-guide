@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { CHECK_COMMANDS } from '../../../shared/utils/site'
+import { AI_CHECK_COMMAND, CHECK_COMMAND, SKILL_COMMAND } from '../../../shared/utils/site'
 import { commandCopyText } from '../app/utils/commandCopy'
 
 /**
@@ -20,17 +20,17 @@ const vueFiles = Object.fromEntries(['app', 'layers'].flatMap((dir) =>
 describe('指令前面的 $', () => {
   it('指令框「複製」出去的只有指令，沒有 $、說明與示意結果', () => {
     const text = commandCopyText([
-      { kind: 'command', text: 'git clone https://example.com/guide.git' },
-      { kind: 'command', text: '$ node guide.mjs check README.md' },
+      { kind: 'command', text: 'curl -fsSL https://example.com/guide.md' },
+      { kind: 'command', text: '$ npx guide check README.md' },
       { kind: 'comment', text: '# 說明' },
       { kind: 'error', text: '1:3  錯誤' },
     ])
-    expect(text).toBe('git clone https://example.com/guide.git\nnode guide.mjs check README.md')
+    expect(text).toBe('curl -fsSL https://example.com/guide.md\nnpx guide check README.md')
     expect(text).not.toMatch(/^\s*\$/m)
   })
 
   it('站上給人照打的指令本身都不帶 $', () => {
-    for (const command of CHECK_COMMANDS) expect(command).not.toMatch(/^\s*\$/)
+    for (const command of [CHECK_COMMAND, AI_CHECK_COMMAND, SKILL_COMMAND]) expect(command).not.toMatch(/^\s*\$/)
   })
 
   it('$ 是 CSS 產生的（.prompt-mark::before），而且選不到', () => {

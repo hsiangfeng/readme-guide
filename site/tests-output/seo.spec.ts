@@ -5,7 +5,8 @@ import { LOCALES } from '../shared/utils/locales'
 import { allPagePaths, alternateLinks, localizedPath, pageUrl, PERSON_ID, SITE_PAGES } from '../shared/utils/seo'
 import { PROJECT_TYPES } from '../shared/utils/projectTypes'
 import { samplePath } from '../shared/utils/samples'
-import { SITE_URL } from '../shared/utils/site'
+import { AI_CHECK_COMMAND, REPO_URL, SITE_URL, SKILL_URL } from '../shared/utils/site'
+import { listGuideFiles } from '../server/utils/guideFiles'
 
 /*
  * 產生出來的靜態網站（.output/public）：每一頁的 SEO 標籤、標題層級、結構化資料、分享圖，
@@ -193,10 +194,17 @@ describe('網站地圖、robots.txt、llms.txt', () => {
     expect(robots.trim().split('\n').at(-1)).toBe(`Sitemap: ${SITE_URL}/sitemap.xml`)
   })
 
-  it('llms.txt：叫 AI 去讀 SKILL.md、列出填好的範例與全部頁面、最後是 Entity', () => {
+  it('llms.txt：叫 AI 讀網站上的 skill.md、不用 clone、用 npx 跑檢查工具；列出原始檔網址、填好的範例與全部頁面、最後是 Entity', () => {
     const llms = read('llms.txt')
-    expect(llms).toContain('skills/readme-guide/SKILL.md')
+    expect(llms).toContain(SKILL_URL)
+    expect(llms).toContain('do not need to clone')
+    expect(llms).not.toMatch(/git clone|readme-guide\.mjs/)
+    expect(llms).toContain(AI_CHECK_COMMAND)
     expect(llms).toContain('Node.js 22 or later')
+    // 放上網站的原始檔都列出網址（SKILL、references、範本、rules/ 的 JSON）
+    for (const file of listGuideFiles(join(__dirname, '../..'))) expect(llms, file.path).toContain(`${SITE_URL}${file.path}`)
+    // 原始碼的連結只留一處
+    expect(llms.split(REPO_URL).length - 1).toBe(1)
     // 四種類型「填好的範例」，繁中與英文的路徑都列出來，而且檔案真的在
     for (const type of PROJECT_TYPES) {
       for (const locale of LOCALES) {

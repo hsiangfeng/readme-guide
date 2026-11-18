@@ -53,7 +53,6 @@ export default {
       announceFailed: 'Could not copy to clipboard. Please select and copy the text manually.',
     },
     prompt: {
-      run: 'First, run this command:',
       caution: "If anything is unclear, ask me first. Don't make it up.",
     },
     /** 必填／選填的小標籤 */

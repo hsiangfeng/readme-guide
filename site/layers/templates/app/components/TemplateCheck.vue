@@ -2,7 +2,7 @@
 import type { Localized } from '#shared/types/rules'
 import { localized } from '#shared/utils/locales'
 import { placeholderBare } from '#shared/utils/placeholders'
-import { CHECK_COMMANDS } from '#shared/utils/site'
+import { CHECK_COMMAND } from '#shared/utils/site'
 import type { CommandLine } from '#layers/core/app/types'
 
 /**
@@ -18,7 +18,7 @@ const props = defineProps<{
 const { t, locale } = useI18n()
 
 const lines = computed<CommandLine[]>(() => {
-  const result: CommandLine[] = CHECK_COMMANDS.map((text) => ({ text, kind: 'command' }))
+  const result: CommandLine[] = [{ text: CHECK_COMMAND, kind: 'command' }]
   if (props.sample?.message && props.sample.severity && props.first) {
     const message = formatRuleMessage(localized(props.sample.message, locale.value), { text: props.first.text })
     result.push({ text: `${props.first.line}:${props.first.column}　${localized(props.sample.severity, locale.value)}　${message}`, kind: 'error', gapBefore: true })

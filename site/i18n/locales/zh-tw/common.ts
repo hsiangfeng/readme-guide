@@ -53,7 +53,6 @@ export default {
       announceFailed: '無法複製到剪貼簿，請手動選取文字複製',
     },
     prompt: {
-      run: '請先執行這行指令：',
       caution: '不確定的地方先問我，不要自己編。',
     },
     /** 必填／選填的小標籤 */

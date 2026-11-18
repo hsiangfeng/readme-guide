@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { buildPromptLines, promptToText } from '#shared/utils/aiPrompt'
-import { CHECK_COMMANDS, CLONE_URL } from '#shared/utils/site'
+import { checkPromptText } from '#shared/utils/aiPrompt'
+import { CHECK_COMMAND } from '#shared/utils/site'
 import type { CommandLine } from '#layers/core/app/types'
 
 /** 「怎麼跑」：說明、複製給 AI 的指令（跟首頁檢查工具區同一份）、在專案資料夾裡執行的指令 */
 const { t } = useI18n()
 
 const lines = computed<CommandLine[]>(() => [
-  ...CHECK_COMMANDS.map((text) => ({ text, kind: 'command' as const })),
+  { text: CHECK_COMMAND, kind: 'command' },
   { text: `# ${t('rulesPage.run.hint')}`, kind: 'comment' },
 ])
 
 /** 組出要複製給 AI 的指令 */
-function promptText() {
-  return promptToText(buildPromptLines(t, { cloneUrl: CLONE_URL, body: ['lint.prompt.read1', 'lint.prompt.read2'] }))
-}
+const promptText = () => checkPromptText(t)
 </script>
 
 <template>

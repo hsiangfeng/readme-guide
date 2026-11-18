@@ -1,5 +1,8 @@
 /**
  * 主視覺：交給 AI 寫。
+ * `prompt.*` 是指令卡上的文字（畫面與複製出去的一樣）；中間那行指令不在這裡，在 shared/utils/site.ts。
+ * `prompt.hint.*` 是選了專案類型時加進指令的那一句，`{id}` 是類型代號（例如 web-app），從 rules/ 來。
+ * 2026-11-18 改成從網站抓指南的版本（不再叫人下載整份專案），文案已審過。
  */
 export default {
   hero: {
@@ -11,22 +14,21 @@ export default {
     prompt: {
       label: 'Paste into your AI tool',
       copy: 'Copy prompt',
-      read1: 'Read skills/readme-guide/SKILL.md inside it,',
-      read2: 'inspect my current project against the guide,',
-      read3: 'and write a README.md for me.',
+      run: 'First, run this command and read the whole guide it prints:',
+      body1: 'Then inspect my current project against the guide,',
+      body2: 'and write a README.md for me.',
       hint: {
-        webApp: 'This is a web app. Follow the {path} template.',
-        courseExample: 'This is a course example. Follow the {path} template.',
-        portfolio: 'This is a portfolio project. Follow the {path} template.',
-        backendApi: 'This is a backend API. Follow the {path} template.',
+        webApp: 'This is a web app. Use the {id} template.',
+        courseExample: 'This is a course example. Use the {id} template.',
+        portfolio: 'This is a portfolio project. Use the {id} template.',
+        backendApi: 'This is a backend API. Use the {id} template.',
       },
     },
     note: 'Works with any AI tool that can read files and run commands.',
     terminal: {
       title: 'breakfast-order — AI tool',
       label: 'Example of an AI tool writing a README',
-      downloaded: 'Guide downloaded',
-      readGuide: 'Reading skills/readme-guide/SKILL.md',
+      readGuide: 'Read the whole guide',
       scan: 'Checking project: package.json, src/, .env.example',
       detect: 'Detected project type: {value}',
       askUrl: 'Does this project have a live URL?',
@@ -34,9 +36,9 @@ export default {
       askAccount: 'Should I include a test account?',
       answerAccount: 'Yes, one that can view but not edit data',
       you: 'You',
-      applyTemplate: 'Applying templates/en/web-app.md across all eight blocks',
-      runCheck: 'Running checker: {value}',
-      checkResult: '0 problems',
+      fetchTemplate: 'Got {value} template, writing 8 blocks',
+      checkResult: 'Checker result: {value}',
+      noProblems: '0 problems',
       written: 'Wrote README.md',
     },
     terminalNote: 'Example only. The exact output depends on your AI tool, but the workflow is the same.',

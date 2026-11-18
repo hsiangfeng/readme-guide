@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import { buildPromptLines, promptToText } from '#shared/utils/aiPrompt'
-import { CLONE_URL } from '#shared/utils/site'
+import { checkPromptText } from '#shared/utils/aiPrompt'
 
 /** 檢查工具區下方：複製給 AI 的指令（叫 AI 跑檢查工具並修好）、看檢查項目 */
 const { t } = useI18n()
 const paths = useSitePaths()
 
 /** 組出要複製的指令 */
-function promptText() {
-  return promptToText(buildPromptLines(t, {
-    cloneUrl: CLONE_URL,
-    body: ['lint.prompt.read1', 'lint.prompt.read2'],
-  }))
-}
+const promptText = () => checkPromptText(t)
 </script>
 
 <template>
