@@ -1,0 +1,48 @@
+name: "Report a problem｜回報問題"
+description: "The checker got something wrong, or there is a mistake in a template, the rules for AI, or the website.｜檢查工具判斷錯了，或範本、給 AI 的規則、網站內容有誤。"
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this! You can write in English or 繁體中文.
+        謝謝你花時間回報！用繁體中文或英文寫都可以。
+  - type: dropdown
+    id: area
+    attributes:
+      label: "Where is the problem?｜問題出在哪裡？"
+      options:
+        - "Checker｜檢查工具"
+        - "Template｜範本"
+        - "Guide content｜教學內容"
+        - "Rules for AI｜給 AI 的規則"
+        - "Website｜網站"
+        - "Not sure｜不確定"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: "What happened?｜發生了什麼事？"
+      description: "Tell us what you did, what you expected, and what actually happened (for template or website issues, mention which page or project type and which language).｜請說明你做了什麼、原本預期看到什麼、實際卻發生什麼事（如果是範本或網站的問題，請順便寫是哪一頁、哪一種專案類型與語言）。"
+    validations:
+      required: true
+  - type: textarea
+    id: readme
+    attributes:
+      label: "Relevant README content (optional)｜相關的 README 內容（選填）"
+      description: "Paste just the part where the problem happens (and the relevant lines from your project config files if they do not match). Remove keys, passwords, and private data first.｜貼上出問題的那一小段就好（如果是跟專案設定檔對不起來，也請貼上相關的那幾行）。記得先拿掉金鑰、密碼與私人資料。"
+      render: markdown
+  - type: textarea
+    id: output
+    attributes:
+      label: "Command and output (optional)｜執行的指令與輸出（選填）"
+      description: "For checker problems: paste the command you ran and everything it printed, including the rule ID such as CMD004. Adding --json helps even more.｜如果是檢查工具的問題，請貼上你執行的指令與印出的完整結果（包含 CMD004 這類規則代號）；能加上 --json 更好。"
+      render: shell
+  - type: input
+    id: environment
+    attributes:
+      label: "Environment (optional)｜執行環境（選填）"
+      description: "For checker problems, your Node.js version and OS; for website problems, your browser and OS.｜檢查工具的問題請寫 Node.js 版本與作業系統；網站的問題請寫瀏覽器與作業系統。"
+      placeholder: "Node.js 22, macOS"

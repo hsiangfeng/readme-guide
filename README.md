@@ -1,147 +1,117 @@
-<!-- 底下標籤來源參考寫法可至：https://github.com/Envoy-VC/awesome-badges#github-stats -->
+# README Guide
 
-![](https://img.shields.io/github/stars/hsiangfeng/README-Example-Template.svg)｜![](https://img.shields.io/github/forks/hsiangfeng/README-Example-Template.svg)｜![](https://img.shields.io/github/issues-pr/hsiangfeng/README-Example-Template.svg)｜![](https://img.shields.io/github/issues/hsiangfeng/README-Example-Template.svg)
+A README writing guide for people and AI, with an eight-block structure, four templates, AI rules, and a checker.
 
-> 由於許多人都不知道如何撰寫 README，所以我就提供一個 README 範本，讓大家可以參考，許多地方你都可以斟酌是否要加入，或是修改成你自己的風格。
+Status: maintained
 
-**ps. 底下範本不是絕對，你可以依照自己需求斟酌增加或刪除。**
+[繁體中文版 README](README.zh-TW.md)
 
-# README Template
+## Demo
 
-![專案封面圖](https://fakeimg.pl/500/)
+[README Guide website](https://readme-guide.com) · [Traditional Chinese website](https://readme-guide.com/zh-tw/)
 
-> 此專案是一份 README 的撰寫範本，主要是方便所有人可以快速撰寫 README，讓大家可以更有方向的去寫出 README。
+## Screenshots
 
-- [線上觀看連結](https://israynotarray.com/)
+![Home page: title and copyable prompt card on the left, terminal preview on the right showing AI reading the guide, asking questions, running the checker, and finishing the README](docs/images/home.png)
 
-## 功能
+## Features
 
-測試帳號密碼 **（請斟酌提供，建議只提供僅能觀看不能操作的帳號密碼）**
+- [x] Eight-block structure: why each block exists, what to write, common mistakes, and fixed examples
+- [x] Templates for four project types (web app, course example, portfolio, backend API) in English and Traditional Chinese
+- [x] Copy-paste prompt for AI: reads the rules and project files first, asks about anything it cannot find, and runs the checker after writing
+- [x] Zero-dependency checker: compares the README against project config files to catch mismatched commands, versions, environment variables, and licenses
+- [x] Machine-readable checker output for AI tools
 
-```bash
-帳號： example@example.com
-密碼： example
-```
+## Tech Stack
 
-- [x] 登入
-- [x] 登出
-- [x] 產品列表
-...
+- Nuxt 4
+- Vue 3
+- Tailwind CSS 4
+- Vitest 3
+- Node.js 22 (checker, zero dependencies)
 
-## 畫面
+## Getting Started
 
-> 可提供 1~3 張圖片，讓觀看者透過 README 了解整體畫面
+### Requirements
 
-![範例圖片 1](https://fakeimg.pl/500/)
-![範例圖片 2](https://fakeimg.pl/500/)
-![範例圖片 3](https://fakeimg.pl/500/)
+- Node.js 22 or later
+- pnpm 10
 
-## 安裝
-
-> 請務必依據你的專案來調整內容。
-
-以下將會引導你如何安裝此專案到你的電腦上。
-
-Node.js 版本建議為：`16.15.0` 以上...
-
-### 取得專案
+### Installation
 
 ```bash
-git clone git@github.com:hsiangfeng/README-Example-Template.git
+git clone https://github.com/hsiangfeng/readme-guide.git
+cd readme-guide
+pnpm install
+pnpm dev
 ```
 
-### 移動到專案內
+Open http://localhost:3000 in your browser; once you see the home page, it is running.
+
+### Running Tests
+
+Run the website tests:
 
 ```bash
-cd README-Example-Template
+pnpm test
 ```
 
-### 安裝套件
+Run the checker tests:
 
 ```bash
-npm install
+pnpm --filter readme-guide test
 ```
 
-### 環境變數設定
+## Usage
 
-請在終端機輸入 `cp .env.example .env` 來複製 .env.example 檔案，並依據 `.env` 內容調整相關欄位。
+### Let AI Write It
 
-### 運行專案
+Paste the following prompt into an AI tool that can read files and run commands:
+
+```text
+First, run this command:
+git clone https://github.com/hsiangfeng/readme-guide.git
+
+Read skills/readme-guide/SKILL.md inside it,
+check my current project against it,
+and write a README.md for me.
+
+If you're not sure about something, ask me first. Don't make it up.
+```
+
+### Write from a Template
+
+Templates live in `templates/en/` and `templates/zh-TW/`, with one file for each project type (`web-app.md`, `course-example.md`, `portfolio.md`, `backend-api.md`). Replace every `{{FILL: …}}` blank with your own content and delete any sections you do not need.
+
+### Run the Checker
+
+In your project folder, run:
 
 ```bash
-npm run serve
+git clone https://github.com/hsiangfeng/readme-guide.git
+node readme-guide/lint/bin/readme-guide.mjs check README.md
 ```
 
-### 開啟專案
+The exit code is `1` when there are errors, and `0` when there are only warnings or no issues. Add `--type` to specify the project type (`web-app`, `course-example`, `portfolio`, `backend-api`), and `--json` for output formatted for AI to read. Delete the `readme-guide/` folder when you are done; do not commit it with your project.
 
-在瀏覽器網址列輸入以下即可看到畫面
+## Project Structure
 
-```bash
-http://localhost:8080/
+```text
+rules/      Single source of truth: block order, headings, required sections, check rules
+templates/  README templates for the four project types
+skills/     Writing rules for AI
+lint/       README checker
+site/       Website for readme-guide.com
 ```
 
-## 環境變數說明
+## Contributing
 
-```env
-APIPATH= # API 位置
-COUSTOMPATH= # 自訂變數
-...
-```
+If you find an issue with a rule or something missing from a template, open an issue on [GitHub Issues](https://github.com/hsiangfeng/readme-guide/issues). To change a rule, edit only the data in `rules/` and run the tests afterward; the [contributing guide](CONTRIBUTING.md) has the details.
 
-## 資料夾說明
+## Author
 
-- views - 畫面放置處
-- controllers - 控制器放置處
-- modules - 模組放置處
-- assets - 靜態資源放置處
-  - scss - scss 檔案放置處
-  - images - 圖片放置處
-...
+是 Ray 不是 Array | [是 Ray 不是 Array blog](https://israynotarray.com/)
 
-## 專案技術
+## License
 
-- Node.js v16.15.0
-- Vue v3.2.20
-- Vite v4.0.4
-- Vue Router v4.0.11
-- Axios v0.24.0
-- Bootstrap v5.1.3
-...
-
-## 第三方服務
-
-- Algolia
-- Google Analytics
-...
-
-## CI/CD 說明
-
-此專案有使用 Github Actions，所以發起 PR 時會自動執行以下動作：
-
-- 建立 Node.js 環境
-- 安裝相依套件
-- 編譯程式碼
-- 執行 ESLint 掃描
-- 執行測試
-...
-
-當專案 merge 到 main 時會自動執行以下動作：
-
-- 建立 Node.js 環境
-- 安裝相依套件
-- 編譯程式碼
-- 執行 ESLint 掃描
-- 執行測試
-- 部署到 Github Pages
-...
-
-## 聯絡作者
-
-> ps. 這邊絕對不是業配，而是要適當提供一些方式讓觀看者知道你的聯絡方式，讓他們可以更方便的找到你。
-
-你可以透過以下方式與我聯絡
-
-- [部落格](https://israynotarray.com/)
-- [Facebook](https://www.facebook.com/israynotarray)
-- [Instagram](https://www.instagram.com/isray_notarray/)
-...
+MIT; see [LICENSE](LICENSE) for the full text.

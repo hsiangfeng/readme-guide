@@ -1,0 +1,52 @@
+name: "Suggest a change｜提出建議"
+description: "Suggest an improvement to a check rule, a template, the eight-block structure, the rules for AI, or a new project type.｜對檢查規則、範本、八塊結構、給 AI 的規則提出建議，或希望新增專案類型。"
+title: "[Suggestion] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You can write in English or 繁體中文.
+        用繁體中文或英文寫都可以。
+  - type: dropdown
+    id: area
+    attributes:
+      label: "What is this suggestion about?｜這個建議跟哪一部分有關？"
+      options:
+        - "Check rule｜檢查規則"
+        - "Template｜範本"
+        - "Eight-block structure｜八塊結構"
+        - "New project type｜新的專案類型"
+        - "Rules for AI｜給 AI 的規則"
+        - "Website｜網站"
+        - "Other｜其他"
+    validations:
+      required: true
+  - type: dropdown
+    id: project-type
+    attributes:
+      label: "Which existing project type is this about, if any? (optional)｜跟現有的哪一種專案類型有關？（選填）"
+      multiple: true
+      options:
+        - "Web app｜網頁專案"
+        - "Course example｜課程範例"
+        - "Portfolio｜作品集"
+        - "Backend API｜後端 API"
+        - "All of them, or none in particular｜全部適用，或沒有特定專案類型"
+  - type: textarea
+    id: problem
+    attributes:
+      label: "What problem or limitation did you run into?｜你實際使用時遇到了什麼困擾或不夠用的地方？"
+      description: "A concrete situation from a real project helps much more than a general opinion.｜描述一個實際寫專案 README 時遇到的情況，會比只談抽象看法更有幫助。"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "What change would you like to see? (optional)｜你希望怎麼調整？（選填）"
+      description: "Not sure how to fix it? Leave this empty; describing the problem is enough.｜不確定怎麼改也沒關係，這一格可以留空，把遇到的狀況講清楚就夠了。"
+  - type: textarea
+    id: example
+    attributes:
+      label: "Example README (optional)｜可以參考的 README 範例（選填）"
+      description: "Share a link or paste a short snippet to show what you have in mind.｜可以貼上連結，或直接貼一小段內容當作例子。"

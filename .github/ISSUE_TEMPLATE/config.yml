@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Read the guide first (English)"
+    url: https://readme-guide.com
+    about: "The eight-block structure, the templates, the rules for AI, and every check rule are explained there."
+  - name: "先看指南（繁體中文）"
+    url: https://readme-guide.com/zh-tw/
+    about: "網站上有八塊結構、範本、給 AI 的規則，以及每一條檢查規則的完整說明。"

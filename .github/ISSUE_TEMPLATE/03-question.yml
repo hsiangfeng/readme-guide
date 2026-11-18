@@ -1,0 +1,34 @@
+name: "Ask a question｜提問"
+description: "Ask how to write part of your README, or how to use the templates, the rules for AI, or the checker.｜詢問 README 某一塊怎麼寫，或範本、給 AI 的規則、檢查工具怎麼用。"
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check the guide first—your question may already be answered there: https://readme-guide.com
+        You can write in English or 繁體中文.
+
+        建議先翻翻指南，裡面可能已經有答案：https://readme-guide.com/zh-tw/
+        用繁體中文或英文寫都可以。
+  - type: textarea
+    id: question
+    attributes:
+      label: "Your question｜你想問的問題"
+    validations:
+      required: true
+  - type: dropdown
+    id: project-type
+    attributes:
+      label: "Which project type is yours? (optional)｜你的專案屬於哪一種專案類型？（選填）"
+      options:
+        - "Web app｜網頁專案"
+        - "Course example｜課程範例"
+        - "Portfolio｜作品集"
+        - "Backend API｜後端 API"
+        - "Other｜其他"
+  - type: textarea
+    id: context
+    attributes:
+      label: "What have you tried, or which part of your README is this about? (optional)｜你試過什麼做法，或這是關於 README 的哪一段？（選填）"
+      description: "Tell us which page of the guide you read, or paste the relevant part of your README. Remove keys, passwords, and private data first.｜可以說明你看過指南的哪一頁，或直接貼上相關的那一段 README。記得先拿掉金鑰、密碼與私人資料。"
