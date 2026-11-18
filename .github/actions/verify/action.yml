@@ -1,0 +1,37 @@
+# PR 檢查（ci.yml）用的步驟：裝環境 → `pnpm verify`（測試、產生網站、檢查產出）。
+# `pnpm verify` 定義在根目錄 package.json，Cloudflare 部署前的建置也跑同一個指令，檢查只寫一份。
+# 呼叫前要先 actions/checkout。
+name: "Verify and build｜檢查並產生網站"
+description: "Install, then run pnpm verify: every check, the static site and its output checks.｜安裝後跑 pnpm verify：全部檢查、產生靜態網站並檢查產出。"
+
+inputs:
+  github-token:
+    description: "Only used to read the star count from the public GitHub API with a higher rate limit. Never written to the output.｜只用來向 GitHub 公開 API 讀星星數（次數上限比較高），不會寫進產出。"
+    required: false
+    default: ${{ github.token }}
+
+runs:
+  using: composite
+  steps:
+    # pnpm 版本讀根目錄 package.json 的 packageManager，不另外寫
+    - name: "Set up pnpm｜安裝 pnpm"
+      uses: pnpm/action-setup@v6
+
+    # Node.js 版本讀 .nvmrc，不另外寫；套件快取照 pnpm-lock.yaml
+    - name: "Set up Node.js｜安裝 Node.js"
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+
+    - name: "Install dependencies｜安裝套件"
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    # ESLint → 型別檢查 → 網站測試 → 檢查工具測試 → 兩份 README 過檢查 → 產生網站 → 檢查產出；任何一步失敗就停。
+    # 權杖一路帶到最後：產生網站時用來讀星星數，檢查產出時用來確認權杖本身沒有出現在任何檔案裡
+    - name: "Run every check and build｜跑全部檢查並產生網站"
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: pnpm verify

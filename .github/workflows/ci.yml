@@ -1,0 +1,32 @@
+# PR 檢查：開 PR 或 PR 有新的 commit 時，跑跟部署一樣的檢查與產生網站（`pnpm verify`），但不發佈。
+# 從 fork 來的 PR 也能跑：不用任何 secrets，權杖只有讀取權限。
+# push 到 main 不跑這裡：合併後由 Cloudflare Workers 的 Git 整合建置，建置指令同樣是 `pnpm verify`，沒過就不會部署。
+name: "Check pull request｜檢查 PR"
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+# 同一個 PR 又推了新的 commit，就停掉還在跑的舊檢查
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: "Verify and build｜檢查並產生網站"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: "Check out｜取出原始碼"
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      # 安裝後跑 pnpm verify（見 .github/actions/verify 與根目錄 package.json）
+      - name: "Verify and build｜檢查並產生網站"
+        uses: ./.github/actions/verify
