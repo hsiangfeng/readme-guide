@@ -1,10 +1,35 @@
-// 讀取專案根目錄 rules/ 底下的規則資料。所有塊的順序、標題名稱、類型必填表都從這裡來。
-import { readFileSync } from 'node:fs';
+// 讀取規則資料。所有塊的順序、標題名稱、類型必填表都從這裡來。
+//
+// 規則的單一來源是 repo 根目錄的 rules/。發佈成 npm 套件時，打包前（prepack）會把它複製到套件裡的 rules/，
+// 打包後（postpack）再刪掉。讀取的順序刻意寫死，避免兩個陷阱：
+// 1. 在 repo 裡一律讀根目錄的 rules/，就算 lint/rules/ 殘留舊複本也不會蓋過它。
+// 2. 裝在別人的專案時，只讀套件自己帶的 rules/，不往上找 ../../rules/（那裡可能是 node_modules/rules 這種不相干的套件）。
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const rulesDir = new URL('../../rules/', import.meta.url);
+/** 套件的根目錄（package.json 所在的資料夾） */
+export const packageDir = fileURLToPath(new URL('..', import.meta.url));
+
+/** 這份程式是不是在 README Guide 的 repo 裡面（lint/ 資料夾，旁邊有 rules/ 與 pnpm-workspace.yaml） */
+function inRepository(dir) {
+  const parent = path.dirname(path.resolve(dir));
+  return path.basename(path.resolve(dir)) === 'lint'
+    && existsSync(path.join(parent, 'rules', 'rules.json'))
+    && existsSync(path.join(parent, 'pnpm-workspace.yaml'));
+}
+
+/** 規則資料所在的資料夾與來源 */
+export const rulesSource = inRepository(packageDir)
+  ? { dir: path.join(path.dirname(path.resolve(packageDir)), 'rules'), from: 'repository' }
+  : { dir: path.join(packageDir, 'rules'), from: 'package' };
 
 function load(name) {
-  return JSON.parse(readFileSync(new URL(name, rulesDir), 'utf8'));
+  const file = path.join(rulesSource.dir, name);
+  if (!existsSync(file)) {
+    throw new Error(`readme-guide: rules file not found: ${file}. The package may be incomplete; reinstall it.`);
+  }
+  return JSON.parse(readFileSync(file, 'utf8'));
 }
 
 export const data = {

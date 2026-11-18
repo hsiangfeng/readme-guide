@@ -1,17 +1,45 @@
 {
   "name": "readme-guide",
   "version": "0.1.0",
-  "private": true,
-  "description": "照 README Guide 的規則檢查 README，不用安裝任何套件就能執行。",
+  "description": "Check a README against the README Guide: eight blocks in a fixed order, verified commands and versions, nothing left unfinished. Zero dependencies.",
+  "keywords": [
+    "readme",
+    "documentation",
+    "lint",
+    "linter",
+    "markdown",
+    "cli",
+    "checker"
+  ],
+  "homepage": "https://readme-guide.com",
+  "bugs": {
+    "url": "https://github.com/hsiangfeng/readme-guide/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsiangfeng/readme-guide.git",
+    "directory": "lint"
+  },
   "license": "MIT",
+  "author": {
+    "name": "Ray",
+    "url": "https://israynotarray.com"
+  },
   "type": "module",
   "bin": {
-    "readme-guide": "./bin/readme-guide.mjs"
+    "readme-guide": "bin/readme-guide.mjs"
   },
+  "files": [
+    "bin/",
+    "src/",
+    "rules/*.json"
+  ],
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "prepack": "node scripts/bundle-rules.mjs copy",
+    "postpack": "node scripts/bundle-rules.mjs clean"
   }
 }

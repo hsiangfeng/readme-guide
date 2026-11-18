@@ -20,3 +20,8 @@ site/.screenshots/
 
 # Cloudflare 的本機暫存（wrangler 產生）
 .wrangler/
+
+# 打包 npm 套件時暫時複製進 lint/ 的規則與授權（單一來源是根目錄的 rules/ 與 LICENSE）
+lint/rules/
+lint/LICENSE
+*.tgz

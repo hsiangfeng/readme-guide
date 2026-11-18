@@ -96,12 +96,31 @@ test('rules/ 的文字沒有 AI 廠商或產品名稱，也沒有工程術語與
 });
 
 test('skills/ 與 lint/ 的程式、文件、測試資料都沒有 AI 廠商或產品名稱', () => {
-  for (const base of ['../../skills/', '../src/', '../bin/', '../fixtures/']) {
+  for (const base of ['../../skills/', '../src/', '../bin/', '../scripts/', '../fixtures/']) {
     const dir = new URL(base, import.meta.url);
     for (const name of readdirSync(dir, { recursive: true })) {
       if (!/\.(?:md|js|mjs|json|ya?ml|html|vue|txt)$|LICENSE$|\.nvmrc$|\.env\.example$/.test(name)) continue;
       const text = readFileSync(new URL(name, dir), 'utf8').toLowerCase();
       for (const word of FORBIDDEN) assert.ok(!text.includes(word.toLowerCase()), `${base}${name} 出現「${word}」`);
+    }
+  }
+  // 會出現在 npm 套件頁面與 repo 首頁的文件
+  for (const file of ['../README.md', '../package.json', '../../README.md', '../../README.zh-TW.md']) {
+    const text = readFileSync(new URL(file, import.meta.url), 'utf8').toLowerCase();
+    for (const word of FORBIDDEN) assert.ok(!text.includes(word.toLowerCase()), `${file} 出現「${word}」`);
+  }
+});
+
+test('給 AI 的指南不依賴整份 repo：不叫人 clone、不寫 repo 內的路徑', () => {
+  const dir = new URL('../../skills/', import.meta.url);
+  for (const name of readdirSync(dir, { recursive: true })) {
+    if (!name.endsWith('.md')) continue;
+    const text = readFileSync(new URL(name, dir), 'utf8');
+    assert.doesNotMatch(text, /\bGUIDE\b/, `${name} 還在用 GUIDE`);
+    assert.doesNotMatch(text, /readme-guide\.git|lint\/bin|readme-guide\.mjs/, `${name} 還叫人 clone 或用 repo 裡的檢查工具`);
+    assert.doesNotMatch(text, /`(?:rules|templates)\//, `${name} 還寫 repo 內的路徑`);
+    for (const match of text.matchAll(/npx (?:--yes )?readme-guide(\S*)/g)) {
+      assert.equal(match[1], '@latest', `${name} 的 npx 指令要帶 @latest`);
     }
   }
 });
