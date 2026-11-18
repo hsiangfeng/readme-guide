@@ -1,0 +1,119 @@
+{
+  "slug": "structure",
+  "headings": [
+    "## Project Structure"
+  ],
+  "why": "Anyone opening the codebase to make a change first asks where things live. A short map of the main folders saves them from digging through every directory.",
+  "question": "Where are the files if I want to change something?",
+  "questionNote": "Once it runs and you want to edit code",
+  "who": "Required for course examples and backend APIs",
+  "whoNote": "Recommended whenever there are several folders",
+  "partsTitle": "Two things this section needs",
+  "parts": [
+    {
+      "heading": "One or two important folder levels",
+      "need": "required",
+      "text": "Put the tree inside a text code block, show only the top one or two levels that matter, and make sure every folder name matches the repository.",
+      "emphasis": "Do not paste raw tree output with dozens of files or node_modules."
+    },
+    {
+      "heading": "One-line purpose and boundaries",
+      "need": "required",
+      "text": "Write what belongs in each folder, especially rules that are not obvious from the name—such as \"All API calls live here; components do not call fetch directly\"."
+    }
+  ],
+  "before": {
+    "lines": [
+      "## Project Structure",
+      "",
+      "```text",
+      "breakfast-order/",
+      {
+        "text": "├── [[node_modules/]]",
+        "notes": [
+          1
+        ]
+      },
+      {
+        "text": "├── [[controllers/]]",
+        "notes": [
+          2,
+          3
+        ]
+      },
+      {
+        "text": "├── [[models/]]",
+        "notes": [
+          2,
+          3
+        ]
+      },
+      {
+        "text": "└── [[src/]]",
+        "notes": [
+          2
+        ]
+      },
+      {
+        "text": "    ├── [[App.vue]]",
+        "notes": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "    └── [[main.js]]",
+        "notes": [
+          1,
+          2
+        ]
+      },
+      "```"
+    ]
+  },
+  "notes": [
+    {
+      "title": "Dumps the whole tree",
+      "text": "Skip node_modules and individual files; show two levels."
+    },
+    {
+      "title": "Folders have no descriptions",
+      "text": "Add a short phrase beside each folder explaining its role."
+    },
+    {
+      "title": "Folders do not exist",
+      "text": "Remove leftover template folders so paths match the repo.",
+      "rules": [
+        "STR016"
+      ]
+    }
+  ],
+  "after": {
+    "lines": [
+      "## Project Structure",
+      "",
+      "```text",
+      "breakfast-order/",
+      "├── docs/images/    Screenshots used in the README",
+      "├── public/         Static files served as-is",
+      "└── src/",
+      "    ├── api/        Order API calls (no direct fetch)",
+      "    ├── components/ UI components such as menu cards",
+      "    └── views/      Pages such as order and cart",
+      "```"
+    ]
+  },
+  "tip": {
+    "title": "Explain boundaries that are not obvious from the folder name",
+    "paragraphs": [
+      "Writing \"components\" next to components/ adds nothing new; writing \"shared buttons and modals; page-specific ones stay next to their page\" actually helps.",
+      "AI tools also read this map before adding files—clear boundaries keep them from putting code in the wrong directory."
+    ]
+  },
+  "types": {
+    "web-app": "Show where pages, shared components, state, and API calls each live.",
+    "course-example": "Point out which files students should edit and which folders they can leave alone.",
+    "portfolio": "If you organized the folders around a specific pattern, highlight it here in one line.",
+    "backend-api": "Show where routes, business logic, database models, and migrations are kept."
+  }
+}

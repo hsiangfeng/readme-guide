@@ -1,0 +1,110 @@
+{
+  "slug": "license",
+  "headings": [
+    "## Author",
+    "## License"
+  ],
+  "why": "Anyone who wants to reuse the code needs to know if they legally may, and anyone who hits a problem needs to know who to ask. Without these two sections, people cannot safely use it or get help.",
+  "question": "Who do I ask for help, and am I allowed to use this code?",
+  "questionNote": "Always at the very end of the README",
+  "who": "\"Author\" is always required; \"License\" is required for public projects",
+  "whoNote": "Internal or private projects omit License and name the owning team",
+  "partsTitle": "Three things this section needs",
+  "parts": [
+    {
+      "heading": "## Contributing",
+      "need": "optional",
+      "text": "Placed before Author and License to say whether pull requests are welcome and where to report issues. If you do not accept changes, state that plainly."
+    },
+    {
+      "heading": "## Author",
+      "need": "required",
+      "text": "For a public project, list the author and how to reach them (GitHub, email, or website). For an internal or private company project, skip personal emails and name the owning team and where to ask questions."
+    },
+    {
+      "heading": "## License",
+      "need": "conditional",
+      "text": "Required for public projects and always placed at the very end, naming the license (such as MIT) and linking to the LICENSE file; internal or private projects leave this section out.",
+      "emphasis": "Without a license, a public repository reserves all rights by law and nobody may use the code; keep the README, LICENSE file, and package.json consistent."
+    }
+  ],
+  "before": {
+    "lines": [
+      {
+        "text": "[[## License]]",
+        "notes": [
+          1
+        ]
+      },
+      "",
+      {
+        "text": "This project is licensed under [[ISC]].",
+        "notes": [
+          2
+        ]
+      },
+      "",
+      {
+        "text": "[[## Contact]]",
+        "notes": [
+          1
+        ]
+      },
+      "",
+      {
+        "text": "- Email: [[example@example.com]]",
+        "notes": [
+          3
+        ]
+      }
+    ]
+  },
+  "notes": [
+    {
+      "title": "License is not last",
+      "text": "Always put License at the very end of the file.",
+      "rules": [
+        "STR008"
+      ]
+    },
+    {
+      "title": "License mismatches project files",
+      "text": "Match package.json and link to the LICENSE file.",
+      "rules": [
+        "LIC002",
+        "LIC003"
+      ]
+    },
+    {
+      "title": "Leftover fake template email",
+      "text": "Use real contact info, or the owning team internally.",
+      "rules": [
+        "STR010"
+      ]
+    }
+  ],
+  "after": {
+    "lines": [
+      "## Author",
+      "",
+      "是 Ray 不是 Array | hello@example.com",
+      "",
+      "## License",
+      "",
+      "MIT; see [LICENSE](LICENSE) for the full text."
+    ]
+  },
+  "tip": {
+    "title": "Public and internal projects handle this block very differently",
+    "paragraphs": [
+      "On a public GitHub repository, having no license means \"all rights reserved\" by default—others cannot legally copy or modify the code. Pick a license (such as MIT), put the full text in LICENSE, and write the same name in package.json and the README. If the code is only for viewing, write \"All rights reserved\" explicitly.",
+      "For an internal or private company project, delete the License section completely and set license in package.json to UNLICENSED. Under Author, avoid personal emails that break when someone leaves the team; name the owning team and the internal channel where people can ask questions."
+    ]
+  },
+  "types": {
+    "web-app": "Public web apps state the author and license; internal company apps skip the license and name the owning team and support channel.",
+    "course-example": "Students often build on class code for their own projects, so state a permissive license like MIT so they know they are allowed to reuse it.",
+    "portfolio": "Make your contact links easy for interviewers to spot (email, website, GitHub); if you do not want others reusing the code, state \"All rights reserved, for viewing only\".",
+    "backend-api": "Internal services should name the backend team that owns them and where to report issues, without a license section; public APIs state their license."
+  }
+}

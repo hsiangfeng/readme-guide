@@ -1,0 +1,102 @@
+{
+  "slug": "features",
+  "headings": [
+    "## Features"
+  ],
+  "why": "After seeing the screens, readers want to know what the project can actually do and how much of it is finished. A short checklist lets them tell at a glance.",
+  "question": "What can it do, and what is already built?",
+  "questionNote": "Right after Demo and Screenshots",
+  "who": "Required for web apps, portfolios and backend APIs",
+  "whoNote": "Course examples use \"Learning Objectives\"",
+  "partsTitle": "Two things this section needs",
+  "parts": [
+    {
+      "heading": "Completed features",
+      "need": "required",
+      "text": "Use - [x] checkboxes, one user-facing action per line—such as \"Browse the menu and prices by category\"—and keep it to three to eight items.",
+      "emphasis": "Write what a user can do, not implementation details like \"State management with Pinia\"."
+    },
+    {
+      "heading": "Unfinished features",
+      "need": "optional",
+      "text": "Mark items that are not finished yet with - [ ] and add \"(in progress)\". Being upfront about what is unfinished builds more trust than pretending everything is done."
+    }
+  ],
+  "before": {
+    "lines": [
+      "## Features",
+      "",
+      {
+        "text": "[[This system lets customers browse the menu, add items]]",
+        "notes": [
+          1
+        ]
+      },
+      {
+        "text": "[[to the cart, and place orders on their phone.]]",
+        "notes": [
+          1
+        ]
+      },
+      "",
+      {
+        "text": "- [x] [[Client-side routing with Vue Router]]",
+        "notes": [
+          2
+        ]
+      },
+      {
+        "text": "- [x] [[RESTful API integration]]",
+        "notes": [
+          2
+        ]
+      },
+      {
+        "text": "- [ ] [[...]]",
+        "notes": [
+          3
+        ]
+      }
+    ]
+  },
+  "notes": [
+    {
+      "title": "Written as a paragraph",
+      "text": "Use a one-item-per-line checklist so readers can scan."
+    },
+    {
+      "title": "Lists tech as features",
+      "text": "Describe what users can do; put tools under Tech Stack."
+    },
+    {
+      "title": "Leftover template text",
+      "text": "Replace unfinished \"...\" lines with real items or delete them.",
+      "rules": [
+        "STR010"
+      ]
+    }
+  ],
+  "after": {
+    "lines": [
+      "## Features",
+      "",
+      "- [x] Browse the menu and prices by category",
+      "- [x] Add items to the cart and change quantities",
+      "- [x] Pick a pickup time and submit the order",
+      "- [ ] Pay online (in progress)"
+    ]
+  },
+  "tip": {
+    "title": "Start each item with a verb from the user's point of view",
+    "paragraphs": [
+      "Try reading each line after \"A user can…\": \"browse the menu by category\" and \"pick a pickup time and submit the order\" fit naturally, while \"responsive layout\" or \"component architecture\" do not.",
+      "Keep unfinished items to one or two things you genuinely plan to build next, not a long wish list."
+    ]
+  },
+  "types": {
+    "web-app": "List the actions customers or admins can perform on the screens.",
+    "course-example": "Use \"## Learning Objectives\" and \"## Course Unit\" instead, stating what students will learn and which lesson it belongs to.",
+    "portfolio": "Add a \"## My Role\" section right below to state what you built in a team project, or that you built the whole project solo.",
+    "backend-api": "List the main capabilities or endpoint groups here, and leave full request schemas to the API documentation."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "slug": "demo",
+  "headings": [
+    "## Demo",
+    "## Screenshots"
+  ],
+  "why": "Most people will not clone and run a project just to see what it looks like. A live link and a couple of screenshots show them in ten seconds whether it fits their needs.",
+  "question": "What does it look like, and can I try it right now?",
+  "questionNote": "Right after the title and summary",
+  "who": "Required for portfolios; web apps need at least one",
+  "whoNote": "Backend APIs link to API docs instead",
+  "partsTitle": "Three things this section needs",
+  "parts": [
+    {
+      "heading": "## Demo",
+      "need": "optional",
+      "text": "If the project is deployed, link to it here. Make the link text say where it goes, such as \"Corner Breakfast live demo\", instead of \"Click here\"."
+    },
+    {
+      "heading": "## Screenshots",
+      "need": "required",
+      "text": "Include one to three screenshots of key screens, stored in the repository and linked with relative paths. Give every image descriptive alt text in brackets and a short caption below.",
+      "emphasis": "Never leave placeholder images such as fakeimg.pl, and do not use a file name or \"screenshot\" as alt text."
+    },
+    {
+      "heading": "Test account",
+      "need": "optional",
+      "text": "If login is required to see the screens, provide a read-only test account as a normal list rather than inside a command block."
+    }
+  ],
+  "before": {
+    "lines": [
+      "## Demo",
+      "",
+      {
+        "text": "[Please [[click here]] to view](https://example.com/)",
+        "notes": [
+          1
+        ]
+      },
+      "",
+      "## Screenshots",
+      "",
+      {
+        "text": "![App [[screenshot 1]] view](docs/images/order-page.png)",
+        "notes": [
+          2,
+          4
+        ]
+      },
+      "",
+      {
+        "text": "![Cart]([[https://fakeimg.pl/600x400/]])",
+        "notes": [
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  "notes": [
+    {
+      "title": "Link says \"click here\"",
+      "text": "Say where the link goes, not just \"click here\".",
+      "rules": [
+        "LNK004"
+      ]
+    },
+    {
+      "title": "Alt text says \"screenshot\"",
+      "text": "Describe what the screen shows, not the filename.",
+      "rules": [
+        "IMG002"
+      ]
+    },
+    {
+      "title": "Uses a placeholder image",
+      "text": "Replace stand-in URLs with real screenshots in the repo.",
+      "rules": [
+        "IMG004"
+      ]
+    },
+    {
+      "title": "Only images without text",
+      "text": "Add a sentence below explaining what the screen does.",
+      "rules": [
+        "AIR003"
+      ]
+    }
+  ],
+  "after": {
+    "lines": [
+      "## Demo",
+      "",
+      "[Corner Breakfast live demo](https://example.com/)",
+      "",
+      "## Screenshots",
+      "",
+      "![Order page: menu and cart](docs/images/order-page.png)",
+      "",
+      "Tap any item in a category to add it to the cart.",
+      "",
+      "![Cart: items and pickup time](docs/images/cart.png)",
+      "",
+      "Adjust quantities and pick a time before ordering."
+    ]
+  },
+  "tip": {
+    "title": "Store screenshots in the repository, not on image hosts",
+    "paragraphs": [
+      "Put screenshots in a folder like docs/images/ and reference them with relative paths. Links pasted from chat apps or external image hosts often expire after a few months and leave broken images.",
+      "One or two screenshots of the main screens are enough; too many force readers to scroll a long way before reaching the setup steps."
+    ]
+  },
+  "types": {
+    "web-app": "If the app requires login, include a read-only test account so visitors can look around safely.",
+    "course-example": "Show one screenshot of the finished result so students can check whether their version looks right.",
+    "portfolio": "This is the most important block for a portfolio. Make sure the live link works, and include a mobile view if you built one.",
+    "backend-api": "Usually there are no screens; use the heading \"## API Documentation\" instead and link to the local and online docs."
+  }
+}

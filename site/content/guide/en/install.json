@@ -1,0 +1,130 @@
+{
+  "slug": "install",
+  "headings": [
+    "## Getting Started"
+  ],
+  "why": "Anyone who wants to try the project should be able to copy and run the commands in order. Miss one step and they get stuck and move on.",
+  "question": "How do I run this on my computer?",
+  "questionNote": "Comes right after \"What is it?\"",
+  "who": "Required for all four project types",
+  "whoNote": "No exceptions, even for portfolios",
+  "partsTitle": "Three things this section needs",
+  "parts": [
+    {
+      "heading": "### Requirements",
+      "need": "required",
+      "text": "Start with what must be installed and which version. Give a number like \"Node.js 22\", not \"latest version\".",
+      "emphasis": "Versions must match the project configuration files."
+    },
+    {
+      "heading": "### Installation",
+      "need": "required",
+      "text": "Start from cloning the repository, one command per line, so pasting them in order gets the project running.",
+      "emphasis": "End with the local URL to open and what the reader should see when it works."
+    },
+    {
+      "heading": "### Running Tests",
+      "need": "optional",
+      "text": "Only needed if the project has tests; just show the command to run them."
+    }
+  ],
+  "before": {
+    "lines": [
+      "## Install",
+      "",
+      {
+        "text": "Please install the [[latest version]] of Node.js.",
+        "notes": [
+          1
+        ]
+      },
+      "",
+      "```",
+      {
+        "text": "[[$]] [[npm]] install",
+        "notes": [
+          2,
+          3
+        ]
+      },
+      {
+        "text": "[[$]] [[npm run serve]]",
+        "notes": [
+          2,
+          3
+        ]
+      },
+      "```",
+      "",
+      {
+        "text": "Then [[open your browser]] to see the page.",
+        "notes": [
+          4
+        ]
+      }
+    ]
+  },
+  "notes": [
+    {
+      "title": "Says \"latest version\"",
+      "text": "That changes in six months; write a specific number.",
+      "rules": [
+        "VER005"
+      ]
+    },
+    {
+      "title": "Commands start with $",
+      "text": "Copying includes the $ prompt and the command fails.",
+      "rules": [
+        "CMD003"
+      ]
+    },
+    {
+      "title": "Commands mismatch the project",
+      "text": "The project uses pnpm and has no serve script.",
+      "rules": [
+        "CMD004",
+        "CMD005"
+      ]
+    },
+    {
+      "title": "No URL or expected result",
+      "text": "Give the local URL and what shows it worked."
+    }
+  ],
+  "after": {
+    "lines": [
+      "## Getting Started",
+      "",
+      "### Requirements",
+      "",
+      "- Node.js 22 or later",
+      "- pnpm 10",
+      "",
+      "### Installation",
+      "",
+      "```bash",
+      "git clone https://github.com/zaocan/breakfast-order.git",
+      "cd breakfast-order",
+      "pnpm install",
+      "cp .env.example .env",
+      "pnpm dev",
+      "```",
+      "",
+      "Open http://localhost:5173. You should see the menu."
+    ]
+  },
+  "tip": {
+    "title": "Paste and run your own steps once",
+    "paragraphs": [
+      "Open a fresh folder and paste every line from top to bottom. Wherever it fails is where a step is missing.",
+      "If AI writes the README for you, it runs the checker afterwards and fixes commands that do not match the project."
+    ]
+  },
+  "types": {
+    "web-app": "Include the local URL to open once the dev server starts.",
+    "course-example": "Say which branch to start on and where the finished version lives. Write the steps in the exact order students follow.",
+    "portfolio": "Keep the steps short, but make sure they actually work—interviewers sometimes run them.",
+    "backend-api": "Add a Database Setup section and keep the start command for Usage: install, set up the database, then start, so pasting top to bottom works."
+  }
+}

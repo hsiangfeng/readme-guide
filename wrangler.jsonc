@@ -1,0 +1,21 @@
+// Cloudflare Workers 設定：整個網站是建置時預先產生的靜態檔（`pnpm verify` 產生在 site/.output/public），
+// 只用 Workers 的靜態資源，沒有 Worker 程式（不需要 main）。
+// 合併到 main 後由 Cloudflare 後台設定的 Git 整合建置並部署；這個檔決定部署什麼、網址怎麼對應。
+// 欄位說明：https://developers.cloudflare.com/workers/wrangler/configuration/#assets
+{
+  "name": "readme-guide",
+  "compatibility_date": "2026-11-18",
+  "assets": {
+    "directory": "./site/.output/public",
+    // 頁面都是「資料夾/index.html」：沒有結尾斜線的網址轉到有斜線的版本（跟 canonical 一致），
+    // /guide/title/index.html 這種直接打檔名的也轉回 /guide/title/
+    // https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/
+    "html_handling": "auto-trailing-slash",
+    // 找不到的網址回 404 狀態碼，內容是 404.html
+    // https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/
+    "not_found_handling": "404-page"
+  },
+  // 正式網址；部署時 Cloudflare 會自動建好 DNS 紀錄與憑證（同一個 Cloudflare 帳號裡要有 readme-guide.com 這個網域）
+  // https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
+  "routes": [{ "pattern": "readme-guide.com", "custom_domain": true }]
+}

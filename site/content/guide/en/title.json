@@ -1,0 +1,112 @@
+{
+  "slug": "title",
+  "headings": [
+    "# Project Name"
+  ],
+  "why": "Visitors spend only a few seconds deciding whether to keep reading. If the top does not say what the project is and whether anyone still maintains it, they close the tab.",
+  "question": "What is this, and is it still maintained?",
+  "questionNote": "Right at the very top of the README",
+  "who": "Required for all four project types",
+  "whoNote": "Even for a personal practice project",
+  "partsTitle": "Three things this section needs",
+  "parts": [
+    {
+      "heading": "# Project Name",
+      "need": "required",
+      "text": "Put it on the first line as the only top-level heading in the file.",
+      "emphasis": "Put no badges, images, or notes above the title."
+    },
+    {
+      "heading": "One-line description",
+      "need": "required",
+      "text": "Right below the title, say in one plain sentence what the project does and who it is for, within 120 characters.",
+      "emphasis": "Do not format it as a > quote or turn it into a long backstory."
+    },
+    {
+      "heading": "Project status",
+      "need": "required",
+      "text": "On the next line, write \"Status: maintained\", \"Status: completed\", or \"Status: practice project\" so readers know whether it is still updated."
+    }
+  ],
+  "before": {
+    "lines": [
+      {
+        "text": "[[![Stars](https://img.shields.io/badge/stars-0-blue)]]",
+        "notes": [
+          1
+        ]
+      },
+      "",
+      "# Corner Breakfast",
+      "",
+      {
+        "text": "[[>]] [[Morning lines are long, so we built this system with]]",
+        "notes": [
+          2,
+          3
+        ]
+      },
+      {
+        "text": "[[> Vue 3 and Vite to digitize local breakfast shops.]]",
+        "notes": [
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  "notes": [
+    {
+      "title": "Badges above the title",
+      "text": "Start with the title; star counts show no quality.",
+      "rules": [
+        "STR002",
+        "IMG007"
+      ]
+    },
+    {
+      "title": "Description written as quote",
+      "text": "A leading > looks like a quote; use plain text.",
+      "rules": [
+        "STR014"
+      ]
+    },
+    {
+      "title": "Description is too long",
+      "text": "Keep what it does and for whom; move details down.",
+      "rules": [
+        "STR014"
+      ]
+    },
+    {
+      "title": "Missing project status",
+      "text": "Add a status line so readers know it is maintained.",
+      "rules": [
+        "STR004"
+      ]
+    }
+  ],
+  "after": {
+    "lines": [
+      "# Corner Breakfast",
+      "",
+      "A web app to order on your phone and pick up in store.",
+      "",
+      "Status: maintained"
+    ]
+  },
+  "tip": {
+    "title": "Reuse this one sentence in three places",
+    "paragraphs": [
+      "Once you have this sentence, paste the same line into the GitHub repository's About box and the description field in package.json.",
+      "Keeping all three identical means people see the same summary whether they find you through search, a package registry, or the repository itself."
+    ]
+  },
+  "types": {
+    "web-app": "Say who uses it and when, rather than \"A website built with Vue.\"",
+    "course-example": "Name the course and lesson in the description or status so students know they opened the right repository.",
+    "portfolio": "Interviewers often open a dozen tabs at once; make the first sentence clear about the problem your project solves.",
+    "backend-api": "State what data this API serves and which frontend or service calls it."
+  }
+}

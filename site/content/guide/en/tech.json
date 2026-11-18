@@ -1,0 +1,102 @@
+{
+  "slug": "tech",
+  "headings": [
+    "## Tech Stack"
+  ],
+  "why": "Contributors, interviewers, and AI all scan these few lines to see how the project is built. Naming the main frameworks and their major versions tells them what they are working with right away.",
+  "question": "What is this built with, and which major versions?",
+  "questionNote": "The last part of \"What is it?\"",
+  "who": "Required for all four project types",
+  "whoNote": "Portfolios can add \"Design Decisions\"",
+  "partsTitle": "Two things this section needs",
+  "parts": [
+    {
+      "heading": "Main frameworks and tools",
+      "need": "required",
+      "text": "List the three to six core technologies that shape the project: frontend or backend framework, build tool, test runner, and database.",
+      "emphasis": "Do not copy every small utility package from package.json."
+    },
+    {
+      "heading": "Major versions",
+      "need": "required",
+      "text": "Include the major version after each main tool, such as \"Vue 3\" or \"Vite 6\". Major versions change how code is written; minor and patch numbers belong in the lockfile.",
+      "emphasis": "Make sure every major version matches what is in package.json."
+    }
+  ],
+  "before": {
+    "lines": [
+      "## Tech Stack",
+      "",
+      {
+        "text": "- [[Vue]]",
+        "notes": [
+          1
+        ]
+      },
+      {
+        "text": "- [[vue-router ^4.5.0]]",
+        "notes": [
+          3
+        ]
+      },
+      {
+        "text": "- [[Vite v4.2.1]]",
+        "notes": [
+          2,
+          3
+        ]
+      },
+      {
+        "text": "- [[@vitejs/plugin-vue ^5.2.1]]",
+        "notes": [
+          3
+        ]
+      },
+      {
+        "text": "- [[clsx ^2.1.0]]",
+        "notes": [
+          3
+        ]
+      }
+    ]
+  },
+  "notes": [
+    {
+      "title": "Missing major version",
+      "text": "Major versions change syntax; include the major number."
+    },
+    {
+      "title": "Version mismatches package.json",
+      "text": "Match package.json and write only the major version.",
+      "rules": [
+        "VER004"
+      ]
+    },
+    {
+      "title": "Copies every small dependency",
+      "text": "List only main frameworks and tools, not every package."
+    }
+  ],
+  "after": {
+    "lines": [
+      "## Tech Stack",
+      "",
+      "- Vue 3 and Vue Router 4",
+      "- Vite 6",
+      "- Vitest 3 (testing)"
+    ]
+  },
+  "tip": {
+    "title": "Write only the major version so it stays accurate",
+    "paragraphs": [
+      "Writing \"Vue 3.2.20\" goes out of date the next time you update packages; writing \"Vue 3\" stays true for the entire major release.",
+      "AI tools also read these major versions before generating code. Without them, they may suggest syntax from an older release."
+    ]
+  },
+  "types": {
+    "web-app": "List the frontend framework, router or state tool, styling solution, and test runner.",
+    "course-example": "Match the exact major versions taught in class so students do not run into different syntax.",
+    "portfolio": "Add a \"## Design Decisions\" section to explain why you chose this stack and what trade-offs you made.",
+    "backend-api": "Besides the server framework, include the database engine and its major version, such as PostgreSQL 16."
+  }
+}
