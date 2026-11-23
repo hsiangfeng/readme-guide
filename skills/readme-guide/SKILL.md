@@ -79,7 +79,15 @@ Before writing, make a list of everything the README needs that the project file
 - Course example: course name and unit, learning objectives, starter/solution branches
 - Backend API: where the API documentation lives, how the database is created
 
-Ask in **one message**, numbered, each with one line on why it matters, and say which ones are optional. Wait for the answers. If the user cannot answer an optional item, drop that part of the README. If they cannot answer something the README needs (for example how to get a test database running), explain what will be missing and offer concrete choices. Full question wording: `references/discovery.md`.
+Keep this list to yourself and ask **one question per message**. Wait for the answer before you ask the next one. Do not send the whole list as one long numbered message: the user has to answer everything at once, and an early answer often makes later questions unnecessary.
+
+- **Order:** first the questions whose answer changes the other questions (project type, public or internal), then what the README cannot do without, optional items last.
+- **One decision per message:** what you found, the question, one line on why it matters, and your suggestion if you have one. Say if it is optional. Do not pack two questions into one message ("Which URLs? And should I mention the login?" is two).
+- **Say how many are left:** with the first question, tell the user roughly how many questions you have, so they know how long this will take.
+- **Update the list after each answer:** drop the questions it settled or made unnecessary, and never ask again what the user already told you.
+- If the user asks to see all the questions at once, list them.
+
+If the user cannot answer an optional item, drop that part of the README. If they cannot answer something the README needs (for example how to get a test database running), explain what will be missing and offer concrete choices. Full question wording: `references/discovery.md`.
 
 ### 4. Write from the template
 

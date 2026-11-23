@@ -69,7 +69,9 @@ Ask about these when the README needs them and you did not find a definite answe
 
 Rules for asking:
 
-- Ask everything in **one message**, numbered, shortest first. Mark which ones are optional.
+- Ask **one question per message** and wait for the answer before the next one. Never send the whole list at once. Start with the questions that change the others (project type, public or internal), end with the optional ones, and mark optional ones as optional.
+- One message holds one decision. If a question has a follow-up ("Which URLs?" then "Do they need a login note?"), ask the follow-up in the next message.
+- With the first question, say roughly how many questions you have. After each answer, drop the questions it settled or made unnecessary.
 - Put what you already know next to the question so the user only confirms ("I found MIT in package.json but no LICENSE file — keep MIT?").
 - Do not ask what the files already answer.
 - If an optional item stays unanswered, leave that part out. Never fill it with a guess, a sample value or a blank.
